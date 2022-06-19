@@ -31,6 +31,7 @@ class IndexController extends Controller
             'floor' => $request->floor,
             'type_id' => $request->type_id,
             'price' => $request->price,
+            'status' => "ວາງ",
             'image' => $request->file('image'),
             'created_at' => Now(),
         ]);
@@ -64,6 +65,7 @@ class IndexController extends Controller
             'floor' => $request->floor,
             'type_id' => $request->type_id,
             'price' => $request->price,
+            'status' => "ວາງ",
             'image' => $request->file('image'),
             'created_at' => Now(),
         ]);

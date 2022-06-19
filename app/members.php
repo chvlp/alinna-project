@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\rent_room;
+use App\rentRoom;
 
 class members extends Model
 {
@@ -14,11 +14,11 @@ class members extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
-    public function rent_room()
+    public function rentRoom()
     {
-        return $this->hasMany(rent_room::class,'member_id');
+        return $this->hasMany(rentRoom::class,'member_id');
     }
 
 }

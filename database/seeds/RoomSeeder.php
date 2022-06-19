@@ -17,6 +17,7 @@ class RoomSeeder extends Seeder
                 'number' => '201',
                 'floor' => 'ຊັ້ນ 2',
                 'price' => '250',
+                'status' => 'ວາງ',
                 'image' => 'room1.jpg',
             ]
         );
@@ -27,6 +28,7 @@ class RoomSeeder extends Seeder
                 'number' => '302',
                 'floor' => 'ຊັ້ນ 3',
                 'price' => '300',
+                'status' => 'ວາງ',
                 'image' => 'room2.jpg',
             ]
         );
@@ -37,6 +39,7 @@ class RoomSeeder extends Seeder
                 'number' => '405',
                 'floor' => 'ຊັ້ນ 4',
                 'price' => '350',
+                'status' => 'ວາງ',
                 'image' => 'room3.jpg',
             ]
         );

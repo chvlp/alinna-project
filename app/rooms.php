@@ -3,7 +3,7 @@
 namespace App;
 use App\type_room;
 use App\image;
-use App\rent_room;
+use App\rentRoom;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,8 +20,11 @@ class rooms extends Model
     {
         return $this->hasMany(image::class,'room_id');
     }
-    public function rent_room()
+
+
+    public function rentRoom()
     {
-        return $this->hasMany(rent_room::class,'room_id');
+        return $this->hasMany(rentRoom::class,'room_id');
     }
+
 }

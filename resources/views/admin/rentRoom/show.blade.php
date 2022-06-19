@@ -1,5 +1,5 @@
 @extends('layouts.admin-layout')
-@section('room','active bg-gradient-primary')
+@section('rentRoom','active bg-gradient-primary')
 @section('searchUser','')
 @section('title','ຂໍ້ມູນປະເພດຫ້ອງ')
 @section('content')
@@ -10,15 +10,15 @@
         <div style="margin:auto" class="col-lg-8 col-md-6 mt-4 mb-4">
             <div class="card z-index-2 ">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                   <img class="m-auto" src="{{ asset('storage/images/rooms/'.$rooms->image) }}" width="100%" alt="">
+                   <img class="m-auto" src="{{ asset('storage/images/rooms/'.$rentRoom->image) }}" width="100%" alt="">
                 </div>
                 <div class="card-body">
-                <h6 class="mb-0 ">ຫ້ອງ: {{ $rooms->number }}</h6>
-                <p class="text-sm ">{{ $rooms->floor }}</p>
-                <p class="text-sm ">{{ $rooms->type_room->name }}</p>
+                <h6 class="mb-0 ">ຫ້ອງ: {{ $rentRoom->number }}</h6>
+                <p class="text-sm ">{{ $rentRoom->floor }}</p>
+                <p class="text-sm ">{{ $rentRoom->type_room->name }}</p>
                 <hr class="dark horizontal">
                 <div class="d-flex ">
-                    <p class="mb-0 text-sm">ລາຍລະອຽດ : {{ $rooms->type_room->detail }} </p>
+                    <p class="mb-0 text-sm">ລາຍລະອຽດ : {{ $rentRoom->type_room->detail }} </p>
                 </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
 <hr> 
     <div class="row">
       @foreach ($image as $item)
-        @if ($item->room_id == $rooms->id)
+        @if ($item->room_id == $rentRoom->id)
           
           <div style="padding-bottom:2%" class="col-xl-3 col-sm-6 mb-xl-0 mb-20">
             <div class="card">

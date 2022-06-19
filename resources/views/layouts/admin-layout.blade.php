@@ -91,7 +91,7 @@
 
         
         <li class="nav-item">
-          <a class="nav-link text-white @yield('rent_room') " href="{{ route('admin.rent_room.index') }}">
+          <a class="nav-link text-white @yield('rentRoom') " href="{{ route('admin.rentRoom.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-bed"></i>
             </div>

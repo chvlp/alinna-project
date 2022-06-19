@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     public function member()
     {
-        return $this->hasMany(members::class);
+        return $this->hasMany(members::class,'user_id');
     }
 
 

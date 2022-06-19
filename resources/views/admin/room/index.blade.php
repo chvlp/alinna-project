@@ -1,5 +1,5 @@
 @extends('layouts.admin-layout')
-@section('rent_room','active bg-gradient-primary')
+@section('room','active bg-gradient-primary')
 @section('searchUser','')
 @section('title','ຂໍ້ມູນປະເພດຫ້ອງ')
 @section('content')

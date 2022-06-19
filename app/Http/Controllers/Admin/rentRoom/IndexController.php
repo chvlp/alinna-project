@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Rent_room;
+namespace App\Http\Controllers\Admin\rentRoom;
+use App\members;
+use App\rentRoom;
+use App\rooms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\rent_room;
-use App\rooms;
-use App\members;
 
 class IndexController extends Controller
 {
@@ -17,8 +17,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $rent_room = rent_room::orderBy('id')->paginate(5);
-        return view('admin.rent_room.index',compact('rent_room'));
+        $rentRoom = rentRoom::orderBy('id')->paginate(5);
+        return view('admin.rentRoom.index',compact('rentRoom'));
     }
 
     /**
@@ -28,12 +28,11 @@ class IndexController extends Controller
      */
     public function create()
     {
-       
-        // dd($rent_rooms);
         $member = members::all();
         $room = rooms::all();
-        $rent_room = rent_room::orderBy('id')->paginate(5);
-        return view('admin.rent_room.create',compact('rent_room','member','room'));
+        // dd($room);
+        $rentRoom = rentRoom::orderBy('id')->paginate(5);
+        return view('admin.rentRoom.create',compact('rentRoom','member','room'));
     }
 
     /**
@@ -44,16 +43,39 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $rent_room = rent_room::create([
+        $rentRoom = rentRoom::create([
             'room_id' => $request->room_id,
             'member_id' => $request->member_id,
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
             'created_at' => Now(),
         ]);
+        $rentRoom->save();
 
-        $rent_room->save();
+        $rooms = rooms::where('id', $request->room_id)->update([
+            // 'user_id' => $request->user_id,
+            // 'idcard' => $request->idcard,
+            // 'village' => $request->village,
+            // 'distric' => $request->distric,
+            // 'province' => $request->province,
+            // 'country' => $request->country,
+            'status' => "ບໍ່ວາງ",
+            'updated_at' => Now(),
+        ]);
+
         return redirect()->back()->with('success','ເພີ່ມຂໍ້ມູນການເຊົ່າສຳເລັດ');
+
+        $room = rooms::create([
+            'room_id' => $request->room_id,
+            'member_id' => $request->member_id,
+            'intodate' => $request->intodate,
+            'outdate' => $request->outdate,
+            'created_at' => Now(),
+        ]);
+        $rentRoom->save();
+        return redirect()->back()->with('success','ເພີ່ມຂໍ້ມູນການເຊົ່າສຳເລັດ');
+
+
     }
 
     /**
@@ -77,8 +99,8 @@ class IndexController extends Controller
     {
         $room = rooms::all();
         $member = members::all();
-        $rent_room = rent_room::orderBy('id')->paginate(5);
-        return view('admin.rent_room.edit',compact('rent_room','room','member'));
+        $rentRoom = rentRoom::orderBy('id')->paginate(5);
+        return view('admin.rentRoom.edit',compact('rentRoom','room','member'));
     }
 
     /**
@@ -90,6 +112,7 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
@@ -100,6 +123,6 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        //
     }
 }

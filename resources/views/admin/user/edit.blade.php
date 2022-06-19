@@ -150,19 +150,26 @@
                 @if ($item->user_id == $user->id)
               
                   <div class="input-group input-group-dynamic mb-4">
-                    <label  class="form-control"  >ລະຫັດປະຈຳຕົວ:  {{ $item->idcard }} {{ $item->user_id }}</label>
+                    <input type="hidden" name="id" value="{{ implode(', ', $user->member()->get()->pluck('id')->toArray()) }}">
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    
+                    <label class="form-control"  >ລະຫັດປະຈຳຕົວ:  {{ $item->idcard }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
-                      <label  class="form-control"  >ທີ່ຢູ່ບ້ານ:  {{ $item->village }}</label>
+                    <input type="hidden" name="village" value="{{ $item->village }}">
+                    <label  class="form-control"  >ທີ່ຢູ່ບ້ານ:  {{ $item->village }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
-                      <label  class="form-control"  >ທີ່ຢູ່ເມືອງ:  {{ $item->distric }}</label>
+                    <input type="hidden" name="distric" value="{{ $item->distric }}">
+                    <label  class="form-control"  >ທີ່ຢູ່ເມືອງ:  {{ $item->distric }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
-                      <label  class="form-control"  >ທີ່ຢູ່ເເຂວງ:  {{ $item->province }}</label>
+                    <input type="hidden" name="province" value="{{ $item->province }}">
+                    <label  class="form-control"  >ທີ່ຢູ່ເເຂວງ:  {{ $item->province }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
-                      <label  class="form-control"  >ປະເທດ:  {{ $item->country }}</label>
+                    <input type="hidden" name="country" value="{{ $item->country }}">
+                    <label  class="form-control"  >ປະເທດ:  {{ $item->country }}</label>
                   </div>
 
                   <div class="form-check">
@@ -210,6 +217,9 @@
                   
                   
                   <div class="form-check">
+                    <input type="hidden" name="id" value="{{ implode(', ', $user->member()->get()->pluck('id')->toArray()) }}">
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    
                     <input class="form-check-input" value="33" type="radio" name="roles[]" required>
                     <label class="form-check-label" for="flexRadioDefault1">
                       ເປີດບັນຊີ

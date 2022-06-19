@@ -70,7 +70,7 @@ Route::post('admin/image/{room}',      'Admin\Room\IndexController@upload')->nam
 
 // admin  rent_room
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/rent_room',          'Rent_room\IndexController');
+    Route::resource('/rentRoom',          'rentRoom\IndexController');
 });
 
 // admin  electric

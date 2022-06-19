@@ -21,6 +21,7 @@ class CreateMembersTable extends Migration
             $table->string('distric');
             $table->string('province');
             $table->string('country');
+            $table->string('status');
             $table->timestamps();
         });
 

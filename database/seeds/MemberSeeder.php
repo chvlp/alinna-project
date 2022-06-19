@@ -23,6 +23,7 @@ class MemberSeeder extends Seeder
             'distric' => 'ເມືອງ ໄຊເສດຖາ',
             'province' => 'ນະຄອນຫຼວງວຽງຈັນ',
             'country' => 'ປະເທດລາວ',
+            'status' => 'ກຳລັງເຊົ່າ',
         ]);
         
     }

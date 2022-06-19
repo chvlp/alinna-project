@@ -62,14 +62,9 @@ class IndexController extends Controller
     }
     public function update(Request $request, User $user)
     {
-
                             
-        // dd($user->roles->pluck('id'));
-        // dd($request);
-        // dd($request->roles==[33]);
-        // dd($user->roles);
+
         if ( $request->roles == [3] ) {
-            // dd($user->id);
           
             $member = array();
             $member['user_id'] = $user->id;
@@ -78,6 +73,7 @@ class IndexController extends Controller
             $member['distric'] = $request->distric;
             $member['province'] = $request->province;
             $member['country'] = $request->country;
+            $member['status'] = "ກຳລັງເຊົ່າ";
             $member = members::with('user')->insert($member);
 
             $user->roles()->sync($request->roles);
@@ -85,14 +81,60 @@ class IndexController extends Controller
             $user->save();
             return redirect()->route('admin.user.edit',$user)
                             ->with('success','ອັບເດດຂໍ້ມູນຂອງ');
+
+
         }elseif( $request->roles == [33] ){
+            $member = members::where('id', $request->id)->update([
+                'user_id' => $request->user_id,
+                // 'idcard' => $request->idcard,
+                // 'village' => $request->village,
+                // 'distric' => $request->distric,
+                // 'province' => $request->province,
+                // 'country' => $request->country,
+                'status' => "ກຳລັງເຊົ່າ",
+                'updated_at' => Now(),
+            ]);
+
             $user->roles()->sync("3");
             $user->updated_at=Now();
             $user->save();
             return redirect()->route('admin.user.edit',$user)
                             ->with('success','ອັບເດດຂໍ້ມູນຂອງ');
+
+
+        }elseif( $request->roles == [5] ){
+           
+// dd($request->user_id);
+            $member = members::where('id', $request->id)->update([
+                'user_id' => $request->user_id,
+                // 'idcard' => $request->idcard,
+                // 'village' => $request->village,
+                // 'distric' => $request->distric,
+                // 'province' => $request->province,
+                // 'country' => $request->country,
+                'status' => "ອອກເເລ້ວ",
+                'updated_at' => Now(),
+            ]);
+
+            $rooms = rooms::where('id', $request->room_id)->update([
+                // 'user_id' => $request->user_id,
+                // 'idcard' => $request->idcard,
+                // 'village' => $request->village,
+                // 'distric' => $request->distric,
+                // 'province' => $request->province,
+                // 'country' => $request->country,
+                'status' => "ບໍ່ວາງ",
+                'updated_at' => Now(),
+            ]);
+            
+
+
+            $user->roles()->sync($request->roles);
+            $user->updated_at=Now();
+            $user->save();
+            return redirect()->route('admin.user.edit',$user)
+                            ->with('success','ອັບເດດຂໍ້ມູນຂອງ');
         }else {
-            // dd($user->name);
             $user->roles()->sync($request->roles);
             $user->updated_at=Now();
             $user->save();
