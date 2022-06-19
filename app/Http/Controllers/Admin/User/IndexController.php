@@ -7,6 +7,8 @@ use App\RegistorUser;
 use App\Role;
 use App\User;
 use App\members;
+use App\rooms;
+use App\rentRoom;
 use Illuminate\Http\Request;
 use Whoops\Run;
 
@@ -84,6 +86,7 @@ class IndexController extends Controller
 
 
         }elseif( $request->roles == [33] ){
+            // dd($request->rentRoomIddd);
             $member = members::where('id', $request->id)->update([
                 'user_id' => $request->user_id,
                 // 'idcard' => $request->idcard,
@@ -95,6 +98,18 @@ class IndexController extends Controller
                 'updated_at' => Now(),
             ]);
 
+            $rooms = rooms::where('id', $request->rentRoomIddd)->update([
+                // 'user_id' => $request->user_id,
+                // 'idcard' => $request->idcard,
+                // 'village' => $request->village,
+                // 'distric' => $request->distric,
+                // 'province' => $request->province,
+                // 'country' => $request->country,
+                'status' => "ບໍ່ວາງ",
+                'updated_at' => Now(),
+            ]);
+
+
             $user->roles()->sync("3");
             $user->updated_at=Now();
             $user->save();
@@ -105,6 +120,7 @@ class IndexController extends Controller
         }elseif( $request->roles == [5] ){
            
 // dd($request->user_id);
+// dd($request->rentRoomIdd);
             $member = members::where('id', $request->id)->update([
                 'user_id' => $request->user_id,
                 // 'idcard' => $request->idcard,
@@ -116,14 +132,14 @@ class IndexController extends Controller
                 'updated_at' => Now(),
             ]);
 
-            $rooms = rooms::where('id', $request->room_id)->update([
+            $rooms = rooms::where('id', $request->rentRoomIdd)->update([
                 // 'user_id' => $request->user_id,
                 // 'idcard' => $request->idcard,
                 // 'village' => $request->village,
                 // 'distric' => $request->distric,
                 // 'province' => $request->province,
                 // 'country' => $request->country,
-                'status' => "ບໍ່ວາງ",
+                'status' => "ວາງ",
                 'updated_at' => Now(),
             ]);
             
@@ -134,6 +150,7 @@ class IndexController extends Controller
             $user->save();
             return redirect()->route('admin.user.edit',$user)
                             ->with('success','ອັບເດດຂໍ້ມູນຂອງ');
+                            
         }else {
             $user->roles()->sync($request->roles);
             $user->updated_at=Now();

@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 </td>
-                                <td> <p class="text-xs text-center font-weight-bold mb-0">{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</p></td>
+                                <td> <p class="text-xs text-center font-weight-bold mb-0">{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }} | {{ implode(', ', $item->member()->get()->pluck('status')->toArray()) }}</p></td>
                                 <td class="align-middle text-center"> <span class="text-xs font-weight-bold">{{$item->phone}}</span></td>
                                 <td class="align-middle text-center"> <span class="text-xs font-weight-bold">{{$item->updated_at->format('d/m/Y H:i:s')}}</span></td>
                                 <td class="align-middle">
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 </td>
-                                <td> <p class="text-xs text-center font-weight-bold mb-0">{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</p></td>
+                                <td> <p class="text-xs text-center font-weight-bold mb-0">{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }} | {{ implode(', ', $item->member()->get()->pluck('status')->toArray()) }}</p></td>
                                 <td class="align-middle text-center"> <span class="text-xs font-weight-bold">{{$item->phone}}</span></td>
                                 <td class="align-middle text-center"> <span class="text-xs font-weight-bold">{{$item->updated_at->format('d/m/Y H:i:s')}}</span></td>
                                 <td class="align-middle">
@@ -151,8 +151,9 @@
               
                   <div class="input-group input-group-dynamic mb-4">
                     <input type="hidden" name="id" value="{{ implode(', ', $user->member()->get()->pluck('id')->toArray()) }}">
+                    <input type="hidden" name="rentRoomIdd" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                    
+                    <span>{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}</span>
                     <label class="form-control"  >ລະຫັດປະຈຳຕົວ:  {{ $item->idcard }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
@@ -200,6 +201,7 @@
               @foreach ($member as $item)
                 @if ($item->user_id == $user->id)
                   <div class="input-group input-group-dynamic mb-4">
+                    <input type="hidden" name="rentRoomIddd" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
                     <label   class="form-control"  >ລະຫັດປະຈຳຕົວ:  {{ $item->idcard }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
@@ -237,6 +239,7 @@
               <div id="hidden-field"  onchange="showHide()" style="display: none;">
                 <div class="input-group input-group-dynamic mb-4" >
                     <label class="form-label">ລະຫັດປະຈຳຕົວ</label>
+                    <input type="hidden" name="rentRoomId" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
                     <input name="idcard" type="text" class="form-control" >
                 </div>
                 <div class="input-group input-group-dynamic mb-4">

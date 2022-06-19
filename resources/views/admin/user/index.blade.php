@@ -182,7 +182,7 @@
                                     </div>
                                 </div>
                                 </td>
-                                <td> <p class="text-xs text-center font-weight-bold mb-0">{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }} | {{$item->member()->get()->pluck('id') }}</p></td>
+                                <td> <p class="text-xs text-center font-weight-bold mb-0">{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }} | {{ implode(', ', $item->member()->get()->pluck('status')->toArray()) }}</p></td>
                                 <td class="align-middle text-center"> <span class="text-xs font-weight-bold">{{$item->phone}} </span></td>
                                 <td class="align-middle text-center"> <span class="text-xs font-weight-bold">{{$item->created_at->format('d/m/Y H:i:s')}}</span></td>
                                 <td class="align-middle">

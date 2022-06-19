@@ -36,7 +36,7 @@
                 </thead>
                 <tbody >
                   @foreach ($rentRoom as $item)
-                  {{-- @if ($item->member->status == "ກຳລັງເຊົ່າ") --}}
+                  @if ($item->member->status == "ກຳລັງເຊົ່າ")
                     
                   
                     <tr>
@@ -102,7 +102,7 @@
                                 
                             </td> --}}
                     </tr>
-                    {{-- @endif --}}
+                    @endif
                 @endforeach
 
                 </tbody>
