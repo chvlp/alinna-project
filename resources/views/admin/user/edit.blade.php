@@ -153,7 +153,6 @@
                     <input type="hidden" name="id" value="{{ implode(', ', $user->member()->get()->pluck('id')->toArray()) }}">
                     <input type="hidden" name="rentRoomIdd" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                    <span>{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}</span>
                     <label class="form-control"  >ລະຫັດປະຈຳຕົວ:  {{ $item->idcard }}</label>
                   </div>
                   <div class="input-group input-group-dynamic mb-4">
@@ -239,7 +238,7 @@
               <div id="hidden-field"  onchange="showHide()" style="display: none;">
                 <div class="input-group input-group-dynamic mb-4" >
                     <label class="form-label">ລະຫັດປະຈຳຕົວ</label>
-                    <input type="hidden" name="rentRoomId" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
+                    {{-- <input type="hidden" name="rentRoomId" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}"> --}}
                     <input name="idcard" type="text" class="form-control" >
                 </div>
                 <div class="input-group input-group-dynamic mb-4">
