@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\rentRoom;
 use App\members;
 use App\rentRoom;
 use App\rooms;
+use App\User;
+use App\Role;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -86,7 +88,8 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        $rentRooms = rentRoom::find($id);
+        return view('admin.rentRoom.show',compact('rentRooms'));
     }
 
     /**
@@ -99,8 +102,9 @@ class IndexController extends Controller
     {
         $room = rooms::all();
         $member = members::all();
+        $rentRooms = rentRoom::find($id);
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.edit',compact('rentRoom','room','member'));
+        return view('admin.rentRoom.edit',compact('rentRoom','room','rentRooms','member'));
     }
 
     /**
@@ -112,7 +116,15 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($id);
+        $rentRoom = rentRoom::where('id', $id)->update([
+            'room_id' => $request->room_id,
+            'member_id' => $request->member_id,
+            'intodate' => $request->intodate,
+            'outdate' => $request->outdate,
+            'updated_at' => Now(),
+        ]);
+        return redirect()->back()->with('success','ເເກ້ໄຂຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
     }
 
     /**
@@ -123,6 +135,44 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rentRooms = rentRoom::find($id);
+        // dd($rentRooms->member->id);
+
+
+        $rooms = rooms::where('id', $rentRooms->room->id)->update([
+            // 'user_id' => $request->user_id,
+            // 'idcard' => $request->idcard,
+            // 'village' => $request->village,
+            // 'distric' => $request->distric,
+            // 'province' => $request->province,
+            // 'country' => $request->country,
+            'status' => "ວາງ",
+        ]);
+
+        $members = members::where('id', $rentRooms->member->id)->update([
+            // 'user_id' => $request->user_id,
+            // 'idcard' => $request->idcard,
+            // 'village' => $request->village,
+            // 'distric' => $request->distric,
+            // 'province' => $request->province,
+            // 'country' => $request->country,
+            'status' => "ອອກເເລ້ວ",
+        ]);
+
+        User::where('id', $rentRooms->member->user->id)->update([
+            // 'user_id' => $request->user_id,
+            // 'idcard' => $request->idcard,
+            // 'village' => $request->village,
+            // 'distric' => $request->distric,
+            // 'province' => $request->province,
+            // 'country' => $request->country,
+            'updated_at' => Now(),
+        ]);
+
+        $rentRooms->member->user->roles()->sync(5);
+        // $user->save();
+
+        $rentRooms->delete();
+        return redirect()->back()->with('success','ລຶບຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App;
 use App\members;
+use App\rooms;
+use App\rentRoomStory;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +20,9 @@ class rentRoom extends Model
     public function room()
     {
         return $this->belongsTo(rooms::class,'room_id');
+    }
+    public function rentRoomStory()
+    {
+        return $this->hasMany(rentRoomStory::class,'rentRoom_id');
     }
 }
