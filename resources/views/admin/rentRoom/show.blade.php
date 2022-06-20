@@ -118,7 +118,7 @@
                                               <p class="mb-0 text-dark font-weight-bold text-sm"> 
                                                 <span class="text-xs">ໝົດກຳນົດ:</span> {{ date('d-m-y'),strtotime($item->rentRoom->outdate) }}
                                               </p>
-                                              <h5 class="mb-0"><span class="text-xs">ລາຄາ:</span>{{ FormatPrice($item->rentRoom->room->price) }} ₭</h5>
+                                              <h5 class="mb-0"><span class="text-xs">ລາຄາ:</span>{{ $item->rentRoom->room->price }} ₭</h5>
                                             </div>
                                           </div>
                                         </div>
