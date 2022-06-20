@@ -87,43 +87,67 @@
                       </div>
 
 
-                      <div class="col-md-12 mb-lg-0 mb-4">
+                      <div class="col-md-12 mb-lg-0 mb-4" >
                         <div class="card mt-4">
                           <div class="card-header pb-0 p-3">
                             <div class="row">
                               <div class="col-6 d-flex align-items-center">
                                 <h6 class="mb-0">ປະຫວັດການເຊົ່າ</h6>
                               </div>
-                              <div class="col-6 text-end">
-                                <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New Card</a>
-                              </div>
                             </div>
                           </div>
 
-                          <div class="card-body p-3">
+                          <div  class="card-body p-3" >
                             <div class="row">
 
-                              <div class="col-md-6 mb-md-0 mb-4">
-                                <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                  <img class="w-10 me-3 mb-0" src="{{ asset('storage/images/rooms/'.$rentRooms->room->image) }}" alt="logo">
-                                  <h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
-                                  <i class="material-icons ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card">edit</i>
-                                </div>
-                              </div>
+                             
+                                <div  class="col-xl-6">
+                                  <div  class="row">
+                                      @foreach ($rentRoomStory as $item)
+                                        <div class="col-md-6 col-6" >
+                                          <div class="card">
+                                            <div class="card-header mx-4 p-3 text-center" >
+                                              <div class="border-radius-lg">
+                                                <img class="border-radius-lg" src="{{ asset('storage/images/profiles/'.$item->rentRoom->member->user->image) }}" alt="" width="100%">
+                                              </div>
+                                            </div>
+                                            <div class="card-body pt-0 p-3 text-center" style="font-family: 'Noto sans Lao">
+                                              <p class="mb-0 text-dark font-weight-bold text-sm"> 
+                                                <span class="text-xs">ວ.ດ.ປ ເຊົ່າ:</span> {{ date('d-m-y'),strtotime($item->rentRoom->intodate) }}
+                                              </p>
+                                              <p class="mb-0 text-dark font-weight-bold text-sm"> 
+                                                <span class="text-xs">ໝົດກຳນົດ:</span> {{ date('d-m-y'),strtotime($item->rentRoom->outdate) }}
+                                              </p>
+                                              <h5 class="mb-0"><span class="text-xs">ລາຄາ:</span>{{ FormatPrice($item->rentRoom->room->price) }} ₭</h5>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    @endforeach
 
-                              <div class="col-md-6 mb-md-0 mb-4">
-                                <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                  <img class="w-10 me-3 mb-0" src="{{ asset('storage/images/rooms/'.$rentRooms->room->image) }}" alt="logo">
-                                  <h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
-                                  <i class="material-icons ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card">edit</i>
+
+                                      <div class="col-md-6 col-6">
+                                        <div class="card">
+                                          <div class="card-header mx-4 p-3 text-center">
+                                            <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                              <i class="material-icons opacity-10">account_balance</i>
+                                            </div>
+                                          </div>
+                                          <div class="card-body pt-0 p-3 text-center">
+                                            <h6 class="text-center mb-0">Salary</h6>
+                                            <span class="text-xs">Belong Interactive</span>
+                                            <hr class="horizontal dark my-3">
+                                            <h5 class="mb-0">+$2000</h5>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                  </div>
                                 </div>
-                              </div>
-                              
+
+                                
+
                             </div>
                           </div>
-
-                         
-
                         </div>
                       </div>
                     </div>

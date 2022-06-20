@@ -6,6 +6,8 @@ use App\rentRoom;
 use App\rooms;
 use App\User;
 use App\Role;
+use App\rentRoomStory;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -89,7 +91,9 @@ class IndexController extends Controller
     public function show($id)
     {
         $rentRooms = rentRoom::find($id);
-        return view('admin.rentRoom.show',compact('rentRooms'));
+        $rentRoomStory = rentRoomStory::where('rentRoom_id',$id)->get();
+        // dd($rentRoomStory);
+        return view('admin.rentRoom.show',compact('rentRooms','rentRoomStory'));
     }
 
     /**
