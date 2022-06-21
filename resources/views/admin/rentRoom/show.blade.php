@@ -68,7 +68,7 @@
                             <img src="{{ asset('storage/images/profiles/'.$rentRooms->member->user->image) }}" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="pattern-tree">
                             <span class="mask bg-gradient-dark opacity-10"></span>
                             <div class="card-body position-relative z-index-1 p-3" style="font-family: 'Noto sans Lao">
-                              <span class="material-icons text-white p-2" style="font-family: 'Noto sans Lao">ຜູ້ເຊົ່າຫ້ອງ</span>
+                              <i class="material-icons text-white p-2"></i>
                               <h5 class="text-white mt-4 mb-5 pb-2">{{ $rentRooms->member->user->gender }} {{ $rentRooms->member->user->name }}</h5>
                               <div class="d-flex">
                                 <div class="d-flex">
@@ -125,46 +125,10 @@
                                                 </div>
                                               </div>
                                             </div>
-<<<<<<< HEAD
-                                            <div class="card-body pt-0 p-3 text-center" style="font-family: 'Noto sans Lao">
-                                              <p class="mb-0 text-dark font-weight-bold text-sm"> 
-                                                <span class="text-xs">ວ.ດ.ປ ເຊົ່າ:</span> {{ date('d-m-y'),strtotime($item->rentRoom->intodate) }}
-                                              </p>
-                                              <p class="mb-0 text-dark font-weight-bold text-sm"> 
-                                                <span class="text-xs">ໝົດກຳນົດ:</span> {{ date('d-m-y'),strtotime($item->rentRoom->outdate) }}
-                                              </p>
-                                              <hr class="horizontal dark my-3">
-                                              <h5 style="text-align: right" class="mb-0 "><span class="text-xs">ລາຄາ:</span>{{ $item->rentRoom->room->price }} ₭</h5>
-                                              <h5 style="text-align: right" class="mb-0"><span class="text-xs">ຄ້າງຊຳລະ:</span>{{ $item->rentRoom->room->price }} ₭</h5>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    @endforeach
-
-
-                                      <div class="col-md-6 col-6">
-                                        <div class="card">
-                                          <div class="card-header mx-4 p-3 text-center">
-                                            <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                                              <i class="material-icons opacity-10">account_balance</i>
-                                            </div>
-                                          </div>
-                                          <div class="card-body pt-0 p-3 text-center">
-                                            <h6 class="text-center mb-0">Salary</h6>
-                                            {{-- <span class="text-xs">Belong Interactive</span> --}}
-                                            <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">+$2000</h5>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                  </div>
-=======
 
                                           @endforeach
                                         </div>
                                     </div>
->>>>>>> d77eab9ae62fbc91379448f3d92b3fa86e80cdcd
                                 </div>
                             </div>
                           </div>
