@@ -2,6 +2,10 @@
 @section('room','active bg-gradient-primary')
 @section('searchUser','')
 @section('title','ຂໍ້ມູນປະເພດຫ້ອງ')
+
+@section('page', 'ຈັດການຂໍ້ມູນຫ້ອງ')
+@section('header', 'ສະເເດງຂໍ້ມູນຫ້ອງ')
+
 @section('content')
 
 <div class="container-fluid py-4" style="font-family: 'Noto sans Lao">

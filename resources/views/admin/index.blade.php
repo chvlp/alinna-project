@@ -146,6 +146,8 @@
 @extends('layouts.admin-layout')
 @section('main','active bg-gradient-primary')
 @section('title','ໜ້າຫຼັກ')
+@section('page', 'ຫຼັກ')
+@section('header', 'ສັ່ງລວມຂໍ້ມູນ')
 @section('content')
 
 

@@ -3,27 +3,18 @@
 @section('rentRoom','active bg-gradient-primary')
 @section('searchUser','')
 @section('title','ຂໍ້ມູນປະເພດຫ້ອງ')
+
+@section('page', 'ຈັດການຂໍ້ມູນບໍລິການເຊົ່າ')
+@section('header', 'ຂໍ້ມູນການເຊົ່າ')
+
 @section('content')
 <div class="container-fluid py-4" style="font-family: 'Noto sans Lao">
     <div class="row mb-4">
       <div class="col-lg-8 col-md-8 col-sm-0 mb-md-4 mb-4">
         <div class="card my-4">
-          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <div class="bg-gradient-primary">
-                  <div class="row">
-                    <div class="col-lg-6 col-7">
-                      <h6 style="" class="text-white text-capitalize ps-3">ຂໍ້ມູນການເຊົ່າຫ້ອງ</h6>
-                    </div>
-                    <div style="padding-right: 3%" class="col-lg-6 col-5 my-auto text-end">
-                        <a style="font-size: 27px;color:white" href="{{ route('admin.rentRoom.index') }}">
-                          <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
+          <div style="margin-bottom: -3%">
+            <a href="{{ route('admin.rentRoom.index') }}" class="btn btn-primary">ຍອນກັບ</a>
+        </div>
           <div class="card-body px-0 pb-2" style="font-family: 'Noto sans Lao">
             <div class="table-responsive p-0">
               <table style="font-family: 'Noto sans Lao" class="table align-items-center mb-0">
@@ -139,11 +130,7 @@
 
       <div class="col-lg-4 col-md-4 mb-md-3 mb-3">
         <div class="card my-4">
-          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">ເພີ່ມຂໍ້ມູນການເຊົ່າຫ້ອງ</h6>
-            </div>
-          </div>
+
 
           <div class="card-body" style="font-family: 'Noto sans Lao">
             <form action="{{ route('admin.rentRoom.update',$rentRooms->id) }}" method="POST" enctype="multipart/form-data">
