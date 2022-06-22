@@ -92,29 +92,4 @@
 
         </div>
     </div>
-
-
-    @if ($message = Session::get('success'))
-        <span style="color: #0fa034"><i class="fas fa-check"></i> </span>
-        <div class="position-fixed bottom-1 end-1 z-index-2">
-            <div class="card-body p-3 pb-0">
-                <div class="alert alert-primary alert-dismissible text-white" role="alert" aria-live="assertive"
-                    aria-atomic="true">
-                    <div class="toast-header">
-                        <i class="material-icons text-success me-2">check</i>
-                        <span class="me-auto font-weight-bold">ສຳເລັດ </span>
-                    </div>
-                    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <hr class="horizontal dark m-0">
-                    <div class="toast-body">{{ $message }}.</div>
-                </div>
-            </div>
-        </div>
-    @endif
-
-
-
 @endsection
