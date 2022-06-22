@@ -19,6 +19,7 @@ class CreateRentRoomsTable extends Migration
             $table->bigInteger('member_id')->unsigned();
             $table->date('intodate');
             $table->date('outdate');
+            $table->string('image');
             $table->timestamps();
         });
         Schema::table('rent_rooms', function (Blueprint $table) {

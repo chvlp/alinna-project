@@ -52,8 +52,18 @@ class IndexController extends Controller
             'member_id' => $request->member_id,
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
+            'image' => $request->file('image'),
             'created_at' => Now(),
         ]);
+
+        if(request()->hasFile('image')){
+            $image = request()->file('image')->getClientOriginalName();
+            $image_name= date('day_H_s_i').'_'.$image;
+            request()->file('image')->storeAs('public/images/rentRooms',$image_name);
+            $rentRoom->Update(['image'=>$image_name]);
+        }
+
+
         $rentRoom->save();
 
         $rooms = rooms::where('id', $request->room_id)->update([

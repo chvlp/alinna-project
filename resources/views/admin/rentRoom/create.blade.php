@@ -169,6 +169,20 @@
                                     <input name="outdate" type="date" class="form-control" required>
                                 </div>
 
+                                
+                                <div class="card">
+                                    <div class="card-header p-3 pt-2">
+                                      <div class="text-end pt-1">
+                                        <div class="drop-zone">
+                                          <span class="drop-zone__prompt"> ວາງຮູບໃບສັນຍາຢູ່ນີ້</span>
+                                          <input type="file" name="image" class="drop-zone__input" required>
+                                        </div>
+                                      </div>
+                                  </div>
+                                  
+                                  </div>
+
+
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">ເພີ່ມ</button>

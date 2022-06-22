@@ -23,6 +23,8 @@
                             ຫ້ອງຖືກເຊົ່າ</th>
                         <th class="text-uppercase text-secondary text-xxs text-left font-weight-bolder opacity-7">
                             ຜູ້ເຊົ່າຫ້ອງ</th>
+                        <th class="text-uppercase text-secondary text-xxs text-left font-weight-bolder opacity-7">
+                            ຮູບໃບສັນຍາ</th>
                         <th class="text-uppercase text-secondary text-xxs text-left font-weight-bolder opacity-7 ps-2">
                             ວດປ ເຊົ່າ-ອອກ</th>
                         <th class="text-secondary opacity-7"></th>
@@ -69,6 +71,19 @@
                                             <p class="text-xs text-secondary mb-0">ສະຖານະ: <span
                                                     style="color: blue">{{ $item->member->status }}</span>
                                             </p>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                            <img src="{{ asset('storage/images/rentRooms/' . $item->image) }}"
+                                                class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-0 text-sm">
+                                               ເລກທີ | {{ $item->member->user->name }}</h6>
                                         </div>
                                     </div>
                                 </td>

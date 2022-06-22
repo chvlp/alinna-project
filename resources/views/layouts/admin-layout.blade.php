@@ -100,25 +100,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-bed"></i>
                         </div>
-                        <span class="nav-link-text ms-1">ບໍລິການເຊົ່າຫ້ອງ</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link text-white @yield('elect') " href="{{ route('admin.electric.index') }}">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-plug-circle-plus"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">ຈັດການຂໍ້ມູນບິນໄຟຟ້າ</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link text-white @yield('water') " href="">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-faucet-drip"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">ຈັດການຂໍ້ມູນບິນນ້ຳປະປາ</span>
+                        <span class="nav-link-text ms-1">ການບໍລິການ</span>
                     </a>
                 </li>
 
@@ -161,11 +143,11 @@
                                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
                                                     >ໜ້າ</a></li>
-                                                <li class="breadcrumb-item text-sm text-white"
+                                                <li style="color:white" class="breadcrumb-item text-sm text-white"
                                                     aria-current="page">@yield('page');
                                                 </li>
                                             </ol>
-                                            <h6 class="font-weight-bolder mb-0">@yield('header')</h6>
+                                            <h6 class="font-weight-bolder mb-0" style="color:white">@yield('header')</h6>
                                         </nav>
                                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
                                             id="navbar">
