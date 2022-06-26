@@ -17,6 +17,7 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('idcard');
+            $table->string('image')->nullable();
             $table->string('village');
             $table->string('distric');
             $table->string('province');

@@ -20,7 +20,7 @@ class CreateRoomsTable extends Migration
             $table->string('floor');
             $table->string('price');
             $table->string('status');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
 

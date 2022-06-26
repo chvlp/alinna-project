@@ -4,6 +4,7 @@ namespace App;
 use App\type_room;
 use App\image;
 use App\rentRoom;
+use App\equiment;
 
 use Illuminate\Database\Eloquent\Model;
 

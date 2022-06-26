@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+class CreatePayElectricsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('pay_electrics', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('room_id')->unsigned();
-            $table->string('detail');
+            $table->bigInteger('elect_id')->unsigned();
+            $table->integer('price');
             $table->string('image')->nullable();
+            $table->string('detail');
             $table->timestamps();
         });
-        Schema::table('images', function (Blueprint $table) {
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade')->onUpdate('cascade');
+        Schema::table('pay_electrics', function (Blueprint $table) {
+            $table->foreign('elect_id')->references('id')->on('electrics')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -32,6 +33,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('pay_electrics');
     }
 }

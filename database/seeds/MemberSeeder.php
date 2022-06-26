@@ -24,6 +24,7 @@ class MemberSeeder extends Seeder
             'province' => 'ນະຄອນຫຼວງວຽງຈັນ',
             'country' => 'ປະເທດລາວ',
             'status' => 'ກຳລັງເຊົ່າ',
+            'image' => 'idcard1.jpg',
         ]);
         
     }

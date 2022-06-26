@@ -17,9 +17,9 @@ class CreateElectricsTable extends Migration
             $table->id();
             $table->bigInteger('room_id')->unsigned();
             $table->bigInteger('member_id')->unsigned();
-            $table->string('IDwater');
+            $table->string('IDelectric');
             $table->integer('price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->DateTime('dateLine');
             $table->timestamps();
         });

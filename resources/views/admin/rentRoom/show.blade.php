@@ -10,10 +10,10 @@
 
 <div class="container-fluid py-4">
     <div class="row">
-        <div class="col-lg-8"> <br><br>
+        <div class="col-lg-7"> <br><br>
             <div class="row">
 
-                <div class="col-xl-7 mb-xl-0 mb-4">
+                <div class="col-xl-8 mb-xl-0 mb-4">
                     <div class="card bg-transparent shadow-xl">
                         <div class="overflow-hidden position-relative border-radius-xl">
                             <img src="{{ asset('storage/images/rooms/' . $rentRooms->room->image) }}" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="pattern-tree">
@@ -45,12 +45,25 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="d-flex">
+                                    <div class="d-flex">
+                                        <div class="me-4">
+                                            <p class="text-white text-sm opacity-8 mb-0">ອຸປະກອນຫ້ອງ</p>
+                                            <h6 class="text-white mb-0">{{ $rentRooms->room->type_room->detail }}</h6>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xl-5 mb-xl-0 mb-4">
+                <div class="col-xl-4 mb-xl-0 mb-4">
                     <div class="card bg-transparent shadow-xl">
                         <div class="overflow-hidden position-relative border-radius-xl">
                             <img src="{{ asset('storage/images/profiles/' . $rentRooms->member->user->image) }}" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="pattern-tree">
@@ -66,12 +79,26 @@
                                 <h5 class="text-white mt-4 mb-5 pb-2">
                                     {{ $rentRooms->member->user->gender }}
                                     {{ $rentRooms->member->user->name }}
+                                    {{ $rentRooms->member->user->surname }}
                                 </h5>
+                              <br>
                                 <div class="d-flex">
                                     <div class="d-flex">
                                         <div>
                                             <p class="text-white text-sm opacity-8 mb-0">| ເບີໂທ</p>
                                             <h6 class="text-white mb-0">| {{ $rentRooms->member->user->phone }}</h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
+
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="d-flex">
+                                        <div>
+                                            <p class="text-white text-sm opacity-8 mb-0">| ອີເມວ</p>
+                                            <h6 class="text-white mb-0">| {{ $rentRooms->member->user->email }}</h6>
                                         </div>
 
                                     </div>
@@ -160,7 +187,6 @@
                                         </div>
                                         <button class="btn btn-dark bg-gradient-dark opacity-9" type="submit"> ບັນທຶກ </button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -169,7 +195,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="card h-100">
                 <div class="card-header pb-0 p-3">
                     <div class="row">
@@ -191,7 +217,7 @@
 
     <div class="row">
         {{-- elect tric --}}
-        <div class="col-md-4 mt-4">
+        <div class="col-md-6 mt-4">
             <div class="card bg-gradient-primary opacity-9">
                 <div class="card-header pb-0 px-3">
                     <h6 class="mb-0">ຂໍ້ມູນລາຍການຈ່າຍຄ່າໄຟຟ້າ</h6>
@@ -257,7 +283,7 @@
 
         {{-- water --}}
 
-        <div class="col-md-4 mt-4">
+        <div class="col-md-6 mt-4">
             <div class="card  bg-gradient-dark opacity-9">
                 <div class="card-header pb-0 px-3">
                     <h6 class="mb-0">ຂໍ້ມູນລາຍການຈ່າຍຄ່ານ້ຳປະປາ</h6>
@@ -323,92 +349,7 @@
         </div>
 
         {{-- ອຸປະກອນ --}}
-
-        <div class="col-md-2 mt-2">
-            <div class="card h-100 mb-4">
-                <div class="card-header pb-0 px-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="mb-0">ອະປະກອນນອນ</h6>
-                        </div>
-                    </div>
-                </div>
-                <div style="border:1px" class="card-body pt-4 p-3">
-
-                    <ul style="border:1px solid red" class="list-group">
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_more</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Netflix</h6>
-                                    <span class="text-xs">27 March 2020, at 12:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                                - $ 2,500
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_less</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Apple</h6>
-                                    <span class="text-xs">27 March 2020, at 04:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 2,000
-                            </div>
-                        </li>
-
-
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">HubSpot</h6>
-                                    <span class="text-xs">26 March 2020, at 12:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 1,000
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_less</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Creative Tim</h6>
-                                    <span class="text-xs">26 March 2020, at 08:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 2,500
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">priority_high</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Webflow</h6>
-                                    <span class="text-xs">26 March 2020, at 05:00 AM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-                                Pending
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
+{{-- 
         <div class="col-md-2 mt-2">
             <div class="card h-100 mb-4">
                 <div class="card-header pb-0 px-3">
@@ -504,7 +445,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 

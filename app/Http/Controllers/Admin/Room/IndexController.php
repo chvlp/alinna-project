@@ -10,6 +10,11 @@ use App\image;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {   
         $rooms = rooms::orderBy('id')->paginate(10);

@@ -39,6 +39,7 @@
                       </div>
                     </td>
                     <td><p class="font-weight-bold mb-0">{{ $item->floor }}</p></td>
+                    {{-- <td><p class="font-weight-bold mb-0">{{ $item->equiments()->pluck('name') }} | ₭</p></td> --}}
                     <td><p class="font-weight-bold mb-0">{{ $item->price }} ₭</p></td>
                     <td class="align-middle">
                       <div style="display:flex">

@@ -14,6 +14,11 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +58,7 @@ class IndexController extends Controller
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
             'image' => $request->file('image'),
+            'noContact' => $request->noContact,
             'created_at' => Now(),
         ]);
 
@@ -136,6 +142,7 @@ class IndexController extends Controller
             'member_id' => $request->member_id,
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
+            'noContact' => $request->noContact,
             'updated_at' => Now(),
         ]);
         return redirect()->back()->with('success','ເເກ້ໄຂຂໍ້ມູນການເຊົ່າຫສຳເລັດ');

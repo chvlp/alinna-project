@@ -78,3 +78,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/electric',          'Electric\IndexController');
 });
 
+// admin  equiment room
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/equiment',          'Equiment\IndexController');
+});
+

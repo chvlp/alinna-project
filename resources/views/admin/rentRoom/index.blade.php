@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-0 text-sm">
-                                               ເລກທີ | {{ $item->member->user->name }}</h6>
+                                               ເລກທີ | {{ $item->noContact }}</h6>
                                         </div>
                                     </div>
                                 </td>

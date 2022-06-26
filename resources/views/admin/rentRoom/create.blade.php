@@ -169,18 +169,22 @@
                                     <input name="outdate" type="date" class="form-control" required>
                                 </div>
 
-                                
+
                                 <div class="card">
                                     <div class="card-header p-3 pt-2">
-                                      <div class="text-end pt-1">
-                                        <div class="drop-zone">
-                                          <span class="drop-zone__prompt"> ວາງຮູບໃບສັນຍາຢູ່ນີ້</span>
-                                          <input type="file" name="image" class="drop-zone__input" required>
+                                        <div class="text-end pt-1">
+                                            <div class="drop-zone">
+                                                <span class="drop-zone__prompt"> ວາງຮູບໃບສັນຍາຢູ່ນີ້</span>
+                                                <input type="file" name="image" class="drop-zone__input" required>
+                                            </div>
                                         </div>
-                                      </div>
-                                  </div>
-                                  
-                                  </div>
+                                    </div>
+
+                                </div>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ປ້ອນເລກທີສັນຍາ</label>
+                                    <input name="noContact" type="text" class="form-control" required>
+                                </div>
 
 
                             </div>

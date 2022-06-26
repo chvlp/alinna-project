@@ -8,6 +8,11 @@ use App\type_room;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $typeroom = type_room::with('room')->orderBy('id')->paginate(10);
