@@ -3,14 +3,14 @@
 {{-- @section('searchUser', '/admin/user/search') --}}
 @section('title', 'ຈັດການຂໍ້ມູນບໍລິການເຊົ່າ')
 
-@section('page', 'ບໍລິການເຊົ່າຫ້ອງ | ອຸປະກອນຫ້ອງ | ||| ')
+@section('page', 'ບໍລິການເຊົ່າຫ້ອງ | ອຸປະກອນຫ້ອງ ')
 @section('header', 'ຂໍ້ມູນການເຊົ່າ')
 
 @section('content')
 
 <div class="container-fluid py-4">
     <div class="row">
-        <div class="col-lg-7"> <br><br>
+        <div class="col-lg-8"> <br><br>
             <div class="row">
 
                 <div class="col-xl-8 mb-xl-0 mb-4">
@@ -19,25 +19,41 @@
                             <img src="{{ asset('storage/images/rooms/' . $rentRooms->room->image) }}" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="pattern-tree">
                             <span class="mask bg-gradient-dark opacity-9"></span>
                             <div class="card-body position-relative z-index-1 p-3" style="font-family: 'Noto sans Lao">
-                                <i class="material-icons text-white p-2">
+                                <p class="material-icons text-white p-2">
 
                                     <span style="font-family: 'Noto sans Lao">
                                         ເບີຫ້ອງ |
                                         {{ $rentRooms->room->number }}
                                     </span>
-                                </i>
-                                <h5 class="text-white mt-4 mb-5 pb-2">
+                                </p>
 
-                                    ຄ່າຫ້ອງ: {{ $rentRooms->room->price }} $
-                                </h5>
+                                <div class="d-flex">
+                                    <div class="d-flex">
+                                        <div class="me-4">
+                                            <h5 class="text-white mt-4 mb-5 pb-2">
+                                                ຄ່າຫ້ອງ| {{ $rentRooms->room->price }} $
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
+                                        <div>
+                                            <h5 class="text-white mt-4 mb-5 pb-2">
+                                                ຄ້າງຊຳລະ| {{ $rentRooms->room->price }} $
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                                 <div class="d-flex">
                                     <div class="d-flex">
                                         <div class="me-4">
                                             <p class="text-white text-sm opacity-8 mb-0">ວ.ດ.ປ ເຊົ່າ</p>
                                             <h6 class="text-white mb-0">{{ $rentRooms->intodate }}</h6>
                                         </div>
-
                                     </div>
+
                                     <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
                                         <div>
                                             <p class="text-white text-sm opacity-8 mb-0">ວັນໝົດກຳນົດ</p>
@@ -56,7 +72,7 @@
                                     </div>
                                 </div>
 
-                                
+
 
                             </div>
                         </div>
@@ -76,12 +92,21 @@
                                         {{ $rentRooms->member->status }}
                                     </span>
                                 </i>
-                                <h5 class="text-white mt-4 mb-5 pb-2">
-                                    {{ $rentRooms->member->user->gender }}
-                                    {{ $rentRooms->member->user->name }}
-                                    {{ $rentRooms->member->user->surname }}
-                                </h5>
-                              <br>
+<br><br><br>
+                              <div class="d-flex">
+                                <div class="d-flex">
+                                    <h5 class="text-white mt-4 mb-5 pb-2">
+                                        {{ $rentRooms->member->user->gender }}
+                                        {{ $rentRooms->member->user->name }}
+                                        {{ $rentRooms->member->user->surname }}
+                                    </h5>
+
+                                </div>
+                                <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
+
+                                </div>
+                            </div>
+
                                 <div class="d-flex">
                                     <div class="d-flex">
                                         <div>
@@ -131,10 +156,6 @@
                                                 <p class="text-white text-sm opacity-8 mb-0">ວ.ດ.ປ ເຊົ່າ</p>
                                                 <h6 class="text-white mb-0">{{ $rentRooms->intodate }}</h6>
                                             </div>
-                                            <div class="me-4">
-                                                <p class="text-white text-sm opacity-8 mb-0">ເງິນຄ້າຊຳລະ</p>
-                                                <h6 class="text-white mb-0">{{ $rentRooms->intodate }}</h6>
-                                            </div>
                                         </div>
                                         <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
                                             <div>
@@ -152,10 +173,7 @@
                                                 <p class="text-white text-sm opacity-8 mb-0">ວ.ດ.ປ ເຊົ່າ</p>
                                                 <h6 class="text-white mb-0">{{ $rentRooms->intodate }}</h6>
                                             </div>
-                                            <div class="me-4">
-                                                <p class="text-white text-sm opacity-8 mb-0">ເງິນຄ້າຊຳລະ</p>
-                                                <h6 class="text-white mb-0">{{ $rentRooms->intodate }}</h6>
-                                            </div>
+
                                         </div>
                                         <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
                                             <div>
@@ -195,7 +213,7 @@
             </div>
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <div class="card h-100">
                 <div class="card-header pb-0 p-3">
                     <div class="row">
@@ -349,7 +367,7 @@
         </div>
 
         {{-- ອຸປະກອນ --}}
-{{-- 
+{{--
         <div class="col-md-2 mt-2">
             <div class="card h-100 mb-4">
                 <div class="card-header pb-0 px-3">

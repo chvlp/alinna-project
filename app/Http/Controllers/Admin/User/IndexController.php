@@ -23,12 +23,12 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         if (empty($request->all())) {
-          
+
             $users = User::orderBy('id')->paginate(10);
             return view('admin.user.index',compact('users'));
         }
             else{
-               
+
                 $users = User::where('id','like','%'.$request->search.'%')
                 ->orWhere('name','like','%'.$request->search.'%')
                 ->paginate(10);
@@ -64,10 +64,11 @@ class IndexController extends Controller
     }
     public function update(Request $request, User $user)
     {
-                            
+        // dd($request->rentRoomIdd);
+
 
         if ( $request->roles == [3] ) {
-          
+
             $member = array();
             $member['user_id'] = $user->id;
             $member['idcard'] = $request->idcard;
@@ -118,8 +119,7 @@ class IndexController extends Controller
 
 
         }elseif( $request->roles == [5] ){
-           
-// dd($request->user_id);
+
 // dd($request->rentRoomIdd);
             $member = members::where('id', $request->id)->update([
                 'user_id' => $request->user_id,
@@ -142,7 +142,19 @@ class IndexController extends Controller
                 'status' => "ວາງ",
                 'updated_at' => Now(),
             ]);
-            
+
+            $rentRoom = rentRoom::where('id', $request->rentId)->update([
+                // 'user_id' => $request->user_id,
+                // 'idcard' => $request->idcard,
+                // 'village' => $request->village,
+                // 'distric' => $request->distric,
+                // 'province' => $request->province,
+                // 'country' => $request->country,
+                'status' => "ອອກເເລ້ວ",
+                'updated_at' => Now(),
+            ]);
+
+
 
 
             $user->roles()->sync($request->roles);
@@ -150,7 +162,7 @@ class IndexController extends Controller
             $user->save();
             return redirect()->route('admin.user.edit',$user)
                             ->with('success','ອັບເດດຂໍ້ມູນຂອງ');
-                            
+
         }else {
             $user->roles()->sync($request->roles);
             $user->updated_at=Now();
@@ -158,7 +170,7 @@ class IndexController extends Controller
             return redirect()->route('admin.user.edit',$user)
                             ->with('success','ອັບເດດຂໍ້ມູນຂອງ');
         }
-       
+
     }
 
 }

@@ -12,7 +12,7 @@
     <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
 
-            <div style="text-align: right;margin-bottom: -3%">
+            <div style="text-align: right;padding-right:16px">
                 <a href="{{ route('admin.rentRoom.create') }}" class="btn btn-primary">ເພີ່ມປະເພດຫ້ອງ</a>
             </div>
 
@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach ($rentRoom as $item)
-                        @if ($item->member->status == 'ກຳລັງເຊົ່າ')
+                        @if (($item->member->status == 'ກຳລັງເຊົ່າ') && ($item->status == 'ກຳລັງເຊົ່າ'))
                             <tr>
                                 <td>
                                     <div class="d-flex px-2 py-1">

@@ -32,7 +32,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($rentRoom as $item)
-                                        @if ($item->member->status == 'ກຳລັງເຊົ່າ')
+                                        @if (($item->member->status == 'ກຳລັງເຊົ່າ') && ($item->status == 'ກຳລັງເຊົ່າ'))
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
@@ -89,7 +89,7 @@
                                                 </td>
 
                                                 {{-- <td class="align-middle">
-                              
+
                               <form class="text-center font-weight-bold text-xs" method="post" action="{{ route('admin.rentRoom.destroy',$item->id) }}">
                                 @csrf
                                 @method('delete')
@@ -105,11 +105,11 @@
                                 <a class="text-center font-weight-bold text-xs" href="{{ route('admin.rentRoom.destroy',$item->id) }}" onclick="event.preventDefault(); this.closest('form').submit(); return confirm('ຕ້ອງການລົບ ຫຼື ໍ ບໍ່?')">
                                   <i style="color: red;" class="fa-solid fa-trash"></i>
                                 </a>
-                                
+
                                 </form>
-                                
-                                  
-                                
+
+
+
                             </td> --}}
                                             </tr>
                                         @endif

@@ -27,8 +27,8 @@
                 </thead>
                 <tbody >
                   @foreach ($rentRoom as $item)
-                  @if (($item->member->status == "ກຳລັງເຊົ່າ") && ($item->id == $rentRooms->id))
-                  
+                  @if (($item->member->status == 'ກຳລັງເຊົ່າ') && ($item->status == 'ກຳລັງເຊົ່າ') && ($item->id == $rentRooms->id))
+
                     <tr>
                             <td>
                               <div class="d-flex px-2 py-1">
@@ -59,7 +59,7 @@
                               </td>
 
 
-                            <td> 
+                            <td>
                               <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column">
                                   <p class="text-xs text-secondary mb-0">ວັນທີເຂົ້າ: {{date('d-m-Y', strtotime($item->intodate)) }}</p>
@@ -75,8 +75,8 @@
 
                 <tbody >
                   @foreach ($rentRoom as $item)
-                  @if (($item->member->status == "ກຳລັງເຊົ່າ") && ($item->id <> $rentRooms->id))
-                  
+                  @if (($item->member->status == 'ກຳລັງເຊົ່າ') && ($item->status == 'ກຳລັງເຊົ່າ') && ($item->id <> $rentRooms->id))
+
                     <tr>
                             <td>
                               <div class="d-flex px-2 py-1">
@@ -107,7 +107,7 @@
                               </td>
 
 
-                            <td> 
+                            <td>
                               <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column">
                                   <p class="text-xs text-secondary mb-0">ວັນທີເຂົ້າ: {{date('d-m-Y', strtotime($item->intodate)) }}</p>
@@ -144,7 +144,7 @@
                 <div class="input-group input-group-dynamic mb-4 form-floating">
                   <select name="member_id" class="form-select form-select-sm" required>
                     <option class="text-danger" value=""> ເລືອກຜູ້ເຊົ່າ</option >
-                      @foreach ($member as $item) 
+                      @foreach ($member as $item)
                         @if ($item->status == "ກຳລັງເຊົ່າ")
                           <option value="{{$item->id}}" {{$item->id == $rentRooms->member->id ? 'selected' : ''}}> {{$item->user->name}}</option>
                         @endif
@@ -156,7 +156,7 @@
                 <div class="input-group input-group-dynamic mb-4 form-floating">
                   <select name="room_id" class="form-select form-select-sm" required>
                     <option class="text-danger" value=""> ເລືອກຫ້ອງ</option >
-                     
+
                       @foreach ($room as $item)
                             @if (($item->status =="ວາງ") or ($item->id == $rentRooms->room->id))
                               <option value="{{$item->id}}" {{$item->id == $rentRooms->room->id ? 'selected' : ''}}> {{$item->number}}</option>
@@ -181,10 +181,10 @@
               <div class="text-center">
                 <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">ເເກ້ໄຂ</button>
               </div>
-             
+
             </form>
           </div>
-         
+
         </div>
       </div>
 

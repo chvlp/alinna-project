@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use App\rentRoom;
 
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +13,10 @@ class rentRoomStory extends Model
 
     public function rentRoom()
     {
-        return $this->beLongsTo(rentRoom::class,'rentRoom_id');
+        return $this->beLongsTo(rentRoom::class, 'rentRoom_id');
+    }
+    public function payRentRoom()
+    {
+        return $this->hasMany(payRentRoom::class, 'payRentRoom_id');
     }
 }

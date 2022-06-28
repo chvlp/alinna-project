@@ -21,6 +21,7 @@ class CreateRentRoomsTable extends Migration
             $table->date('outdate');
             $table->string('image')->nullable();
             $table->string('noContact');
+            $table->string('status');
             $table->timestamps();
         });
         Schema::table('rent_rooms', function (Blueprint $table) {

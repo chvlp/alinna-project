@@ -19,4 +19,8 @@ class electric extends Model
     {
         return $this->beLongsTo(members::class,'member_id');
     }
+    public function payElectric()
+    {
+        return $this->hasMany(payElectric::class,'elect_id');
+    }
 }

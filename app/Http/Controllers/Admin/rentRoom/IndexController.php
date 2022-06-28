@@ -18,7 +18,7 @@ class IndexController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -59,6 +59,7 @@ class IndexController extends Controller
             'outdate' => $request->outdate,
             'image' => $request->file('image'),
             'noContact' => $request->noContact,
+            'status' => "ກຳລັງເຊົ່າ",
             'created_at' => Now(),
         ]);
 
@@ -143,6 +144,7 @@ class IndexController extends Controller
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
             'noContact' => $request->noContact,
+            'status' =>"ອອກເເລ້ວ",
             'updated_at' => Now(),
         ]);
         return redirect()->back()->with('success','ເເກ້ໄຂຂໍ້ມູນການເຊົ່າຫສຳເລັດ');

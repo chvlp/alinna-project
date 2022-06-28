@@ -10,7 +10,7 @@
     <div class="container-fluid py-4" style="font-family: 'Noto sans Lao">
         <div class="row mb-4">
             <div class="col">
-                <div style="text-align: right;margin-bottom: -3%">
+                <div style="text-align: right;padding-right:16px">
                     <a href="{{ route('admin.type.create') }}" class="btn btn-primary">ເພີ່ມປະເພດຫ້ອງ</a>
                 </div>
                 <table class="table align-items-center mb-0">

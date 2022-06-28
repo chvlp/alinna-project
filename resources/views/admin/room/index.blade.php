@@ -11,7 +11,7 @@
 <div class="container-fluid py-4" style="font-family: 'Noto sans Lao">
   <div class="row mb-4">
     <div class="col">
-      <div style="text-align: right;margin-bottom: -3%">
+        <div style="text-align: right;padding-right:16px">
         <a href="{{ route('admin.room.create') }}" class="btn btn-primary">ເພີ່ມປະເພດຫ້ອງ</a>
     </div>
           <div class="table-responsive p-0">
@@ -55,7 +55,7 @@
                         <form class="text-center font-weight-bold text-xs" method="post" action="{{ route('admin.room.destroy',$item->id) }}">
                           @csrf
                           @method('delete')
-                          <a href="{{ route('admin.room.destroy',$item->id) }}" 
+                          <a href="{{ route('admin.room.destroy',$item->id) }}"
                               onclick="event.preventDefault(); this.closest('form').submit(); return confirm('ຕ້ອງການລົບ ຫຼື ໍ ບໍ່?')">
                               <i style="color: red;" class="fa-solid fa-trash"></i>
                           </a>

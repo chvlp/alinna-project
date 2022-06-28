@@ -182,7 +182,12 @@
                                                 value="{{ implode(', ',$user->member()->get()->pluck('id')->toArray()) }}">
                                             <input type="hidden" name="rentRoomIdd"
                                                 value="{{ implode(', ',$item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
+
+                                            <input type="hidden" name="rentId"
+                                                value="{{ implode(', ',$item->rentRoom()->get()->pluck('id')->toArray()) }}">
+
                                             <input type="hidden" name="user_id" value="{{ $user->id }}">
+
                                             <label class="form-control">ລະຫັດປະຈຳຕົວ: {{ $item->idcard }}</label>
                                         </div>
                                         <div class="input-group input-group-dynamic mb-4">
@@ -231,7 +236,7 @@
                                 @foreach ($member as $item)
                                     @if ($item->user_id == $user->id)
                                         <div class="input-group input-group-dynamic mb-4">
-                                            <input type="hidden" name="rentRoomIddd"
+                                            <input type="hidden" name="rentRoomIdd"
                                                 value="{{ implode(', ',$item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
                                             <label class="form-control">ລະຫັດປະຈຳຕົວ: {{ $item->idcard }}</label>
                                         </div>
