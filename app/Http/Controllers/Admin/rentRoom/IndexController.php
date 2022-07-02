@@ -107,10 +107,11 @@ class IndexController extends Controller
      */
     public function show($id)
     {
+        $rentRoomStory = rentRoomStory::all();
         $rentRooms = rentRoom::find($id);
         $rentRoomStory = rentRoomStory::where('rentRoom_id',$id)->get();
         // dd($rentRoomStory);
-        return view('admin.rentRoom.show',compact('rentRooms','rentRoomStory'));
+        return view('admin.rentRoom.show',compact('rentRooms','rentRoomStory','rentRoomStory'));
     }
 
     /**

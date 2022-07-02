@@ -1,147 +1,3 @@
-{{-- @extends('layouts.admin-layout')
-@section('title','ໜ້າຫຼັກ')
-@section('content')
-<div class="sidebar">
-    <ul class="sidebar-nav">
-        <li class="sidebar-nav-item">
-            <a  href="{{route('admin.index')}}" class="sidebar-nav-link active">
-                <div>
-                    <i  class="fas fa-home"></i>
-                </div>
-                <span>ໜ້າຫຼັກ</span>
-            </a>
-        </li>
-        <li class="sidebar-nav-item">
-            <a href="{{route('admin.user.index')}}" class="sidebar-nav-link ">
-                <div>
-                    <i  class="fas fa-users-cog"></i>
-                </div>
-                <span>ຈັດການຂໍ້ມູນຜູ້ໃຊ້</span>
-            </a>
-        </li>
-        <li  class="sidebar-nav-item">
-            <a href="{{route('school.index')}}" class="sidebar-nav-link">
-                <div>
-                    <i class="fas fa-university"></i>
-                </div>
-                <span>ຈັດການຂໍ້ມູນໂຮງຮຽນ</span>
-            </a>
-        </li>
-        <li  class="sidebar-nav-item">
-            <a href="{{route('dormitory.index')}}" class="sidebar-nav-link ">
-                <div>
-                    <i class="fas fa-store-alt"></i>
-                </div>
-                <span>ຈັດການຂໍ້ມູນຫ້ອງເເຖວ</span>
-            </a>
-        </li>
-        <li  class="sidebar-nav-item">
-            <a href="{{route('comment.index')}}" class="sidebar-nav-link ">
-                <div>
-                    <i class="fas fa-comment-alt"></i>
-                </div>
-                <span>ຈັດການຂໍ້ມູນຄອມເມັ້ນ</span>
-            </a>
-        </li>
-        <li  class="sidebar-nav-item">
-            <a href="{{route('report.index')}}" class="sidebar-nav-link">
-                <div>
-                    <i class="fas fa-clipboard-list"></i>
-                </div>
-                <span>ລາຍງານຫ້ອງເເຖວ</span>
-            </a>
-        </li>
-        <li  class="sidebar-nav-item">
-            <a href="{{route('report_user.index')}}" class="sidebar-nav-link">
-                <div>
-                    <i class="far fa-address-book"></i>
-                </div>
-                <span>ລາຍງານຜູ້ໃຊ້</span>
-            </a>
-        </li>
-        <li  class="sidebar-nav-item">
-            <a href="{{route('report_user_dormit.index')}}" class="sidebar-nav-link">
-                <div>
-                    <i class="fas fa-address-book"></i>
-                </div>
-                <span>ລາຍງານເຈົ້າຂອງຫ້ອງເເຖວ</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<!-- main content -->
-<div class="wrapper">
-    <div class="row">
-        <div class="col-12 col-m-12 col-sm-12">
-            <div class="counter bg-warning">
-                <h3>ຍິນດີຕອນຮັບສູ່ໜ້າເວບ</h3>
-                <p>ເຈົ້າຂອງລະບົບ</p>
-                <p><i class="fas fa-user"></i></p>
-            </div>
-        </div>
-        <div class="col-3 col-m-6 col-sm-6">
-            <div class="counter bg-primary">
-                <p>ຈຳນວນຜູ້ໃຊ້</p>
-                <h3>{{$cuser-1}} ຄົນ</h3>
-                <p><i class="fas fa-user"></i></p>
-            </div>
-        </div>
-        <div class="col-3 col-m-6 col-sm-6">
-            <div class="counter bg-warning">
-                <p>ຈຳນວນໂຮງຮຽນ</p>
-                <h3>{{$schools->count()}} ໂຮງຮຽນ</h3>
-                <p> <i class="fas fa-university"></i></p>
-            </div>
-        </div>
-        <div class="col-3 col-m-6 col-sm-6">
-            <div class="counter bg-success">
-                <p>ຈຳນວນຫ້ອງເເຖວທັງໝົກ</p>
-                <h3>{{$cdormitory}} ຫ້ອງເເຖວ</h3>
-                <p><i class="fas fa-university"></i></p>
-            </div>
-        </div>
-        <div class="col-3 col-m-6 col-sm-6">
-            <div class="counter bg-danger">
-                <p>ຈຳນວນລາຍຄອມເມັ້ນທັງໝົດ</p>
-                <h3>{{$comments->count()}} ຄອມເມັ້ນ</h3>
-                <p><i class="far fa-comment-alt"></i></p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-m-12 col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3>
-                        ປະຕິທິນ
-                    </h3>
-                </div>
-                <div style="width: 90%;margin:auto" class="card-content">
-                    <div id="calendar"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-
-
-<!--
-=========================================================
-* Material Dashboard 2 - v=3.0.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-
-
 
 @extends('layouts.admin-layout')
 @section('main','active bg-gradient-primary')
@@ -149,7 +5,6 @@
 @section('page', 'ຫຼັກ')
 @section('header', 'ສັ່ງລວມຂໍ້ມູນ')
 @section('content')
-
 
     <div class="container-fluid py-4">
       <div class="row">
@@ -629,5 +484,5 @@
         </div>
       </div>
 
-      
+
 @endsection
