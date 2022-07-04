@@ -70,10 +70,18 @@ class IndexController extends Controller
             $rentRoom->Update(['image'=>$image_name]);
         }
 
+        // dd($rentRoom->id);
 
-        $rentRoom->save();
+        $rentRoomStory = rentRoomStory::create([
+            'rentRoom_id' => $rentRoom->id,
+            'intodate' => $request->intodate,
+            'outdate' => $request->outdate,
+            'created_at' => Now(),
+        ]);
 
-        $rooms = rooms::where('id', $request->room_id)->update([
+
+
+        rooms::where('id', $request->room_id)->update([
             // 'user_id' => $request->user_id,
             // 'idcard' => $request->idcard,
             // 'village' => $request->village,
@@ -84,18 +92,10 @@ class IndexController extends Controller
             'updated_at' => Now(),
         ]);
 
-        return redirect()->back()->with('success','ເພີ່ມຂໍ້ມູນການເຊົ່າສຳເລັດ');
 
-        $room = rooms::create([
-            'room_id' => $request->room_id,
-            'member_id' => $request->member_id,
-            'intodate' => $request->intodate,
-            'outdate' => $request->outdate,
-            'created_at' => Now(),
-        ]);
         $rentRoom->save();
+        $rentRoomStory->save();
         return redirect()->back()->with('success','ເພີ່ມຂໍ້ມູນການເຊົ່າສຳເລັດ');
-
 
     }
 

@@ -150,11 +150,11 @@
 
                                 </div>
                             </div>
-                            <div class="card-body p-3">
+                            <div class="card-body p-1">
                                 <div class="row">
                                     @foreach ($rentRoomStory as $item)
                                         @if ($item->rentRoom_id == $rentRooms->id)
-                                            <div style="font-family:'Notopadding-top: 2%" class="col-md-6 mb-md-0 mb-4 pt-3">
+                                            <div style="font-family:'Notopadding-top: 2%" class="col-md-12 mb-md-0 mb-4 pt-3">
                                                 <div
                                                     class="card card-body border bg-gradient-dark opacity-9 card-plain border-radius-lg d-flex align-items-center flex-row">
                                                     <div class="d-flex" style="font-family: 'Noto sans Lao">
@@ -180,7 +180,7 @@
                                             </div>
                                         @endif
                                     @endforeach
-                                    <div style="padding-top: 2%" class="col-md-12 mb-md-0 mb-8">
+                                    <div style="padding-top: 2%" class="col-md-12 mb-md-4 mb-8">
 
                                         <div class="row">
                                             <div class="col-md-6">
