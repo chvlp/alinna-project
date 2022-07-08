@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasMany(members::class,'user_id');
     }
 
+    public function rentRoomStory()
+    {
+        return $this->hasMany(rentRoomStory::class,'user_id');
+    }
+
 
     public function roles()
     {

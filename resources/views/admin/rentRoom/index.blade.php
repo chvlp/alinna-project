@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach ($rentRoom as $item)
-                        @if (($item->member->status == 'ກຳລັງເຊົ່າ') && ($item->status == 'ກຳລັງເຊົ່າ'))
+                        @if ($item->member->status == 'ກຳລັງເຊົ່າ' && $item->status == 'ກຳລັງເຊົ່າ')
                             <tr>
                                 <td>
                                     <div class="d-flex px-2 py-1">
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-0 text-sm">
-                                               ເລກທີ | {{ $item->noContact }}</h6>
+                                                ເລກທີ | {{ $item->noContact }}</h6>
                                         </div>
                                     </div>
                                 </td>

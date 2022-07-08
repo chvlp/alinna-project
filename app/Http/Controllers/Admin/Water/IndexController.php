@@ -1,22 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Electric;
-
-use App\electric;
-use App\rooms;
-use App\members;
+namespace App\Http\Controllers\Admin\Water;
 
 use App\Http\Controllers\Controller;
-use App\payElectric;
+use App\payWater;
+use App\water;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +16,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $electric = electric::orderBy('id')->paginate(5);
-        return view('admin.electric.index', compact('electric'));
+        //
     }
 
     /**
@@ -35,10 +26,7 @@ class IndexController extends Controller
      */
     public function create()
     {
-        // $room = rooms::all();
-        // $member = members::all();
-        // $electric = electric::orderBy('id')->paginate(10);
-        // return view('admin.electric.create',compact('electric','room','member'));
+        //
     }
 
     /**
@@ -49,13 +37,11 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $electric = electric::create([
+        $water = water::create([
             'indate' => $request->indate,
             'rentRoom_id' => $request->rentRoom_id,
             'member_id' => $request->member_id,
-            'before' => $request->before,
-            'after' => $request->after,
-            'IDelectric' => $request->IDelectric,
+            'IDwater' => $request->IDwater,
             'price' => $request->price,
             'image' => $request->file('image'),
             'status' => "ຍັງບໍ່ທັນຈ່າຍ",
@@ -65,12 +51,11 @@ class IndexController extends Controller
         if (request()->hasFile('image')) {
             $image = request()->file('image')->getClientOriginalName();
             $image_name = date('day_H_s_i') . '_' . $image;
-            request()->file('image')->storeAs('public/images/Electrics', $image_name);
-            $electric->Update(['image' => $image_name]);
+            request()->file('image')->storeAs('public/images/Waters', $image_name);
+            $water->Update(['image' => $image_name]);
         }
-
-        $electric->save();
-        return redirect()->back()->with('success', 'ເພີ່ມຂໍ້ມູນຄ່າໄຟຟ້າສຳເລັດ');
+        $water->save();
+        return redirect()->back()->with('success', 'ເພີ່ມຂໍ້ມູນຄ່ານ້ຳປະປາສຳເລັດ');
     }
 
     /**
@@ -92,9 +77,9 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        $pay_electric = payElectric::where('electric_id',$id)->first();
-        $electric = electric::where('id',$id)->first();
-        return view('admin.electric.Edit',compact('electric','pay_electric'));
+        $pay_water = payWater::where('water_id', $id)->first();
+        $water = water::where('id', $id)->first();
+        return view('admin.water.Edit', compact('water', 'pay_water'));
     }
 
     /**
@@ -106,27 +91,24 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $electric = electric::where('id', $id)->update([
+        $electric = water::where('id', $id)->update([
             // 'indate' => $request->indate,
             // 'rentRoom_id' => $request->rentRoom_id,
             // 'member_id' => $request->member_id,
-            // 'before' => $request->before,
-            // 'after' => $request->after,
-            // 'IDelectric' => $request->IDelectric,
+            // 'IDwater' => $request->IDwater,
             // 'price' => $request->price,
             // 'image' => $request->file('image'),
             'status' => $request->status,
-            'updated_at' => Now(),
+            'created_at' => Now(),
         ]);
 
         if (request()->hasFile('image')) {
             $image = request()->file('image')->getClientOriginalName();
             $image_name = date('day_H_s_i') . '_' . $image;
-            request()->file('image')->storeAs('public/images/Electrics', $image_name);
+            request()->file('image')->storeAs('public/images/Waters', $image_name);
             $electric->Update(['image' => $image_name]);
         }
-
-        return redirect()->back()->with('success', 'ເເກ້ໄຂຂໍ້ມູນຄ່າໄຟຟ້າສຳເລັດ');
+        return redirect()->back()->with('success', 'ເເກ້ໄຂຂໍ້ມູນຄ່ານ້ຳປະປາສຳເລັດ');
     }
 
     /**

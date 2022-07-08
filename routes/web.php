@@ -73,13 +73,24 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/rentRoom',          'rentRoom\IndexController');
 });
 
+// admin  rent_room_story
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/rentRoomStory',          'rentRoomStory\IndexController',['except' =>['index','create','show','destroy']]);
+});
+
+
 // admin  electric
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/electric',          'Electric\IndexController');
+    Route::resource('/electric',          'Electric\IndexController',['except'=>['index','create','show','destroy']]);
+});
+
+// admin  electric
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/Water',          'Water\IndexController',['except'=>['index','create','show','destroy']]);
 });
 
 // admin  equiment room
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/equiment',          'Equiment\IndexController');
-});
+// Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+//     Route::resource('/equiment',          'Equiment\IndexController');
+// });
 

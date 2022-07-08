@@ -14,6 +14,7 @@ class payRentRoom extends Model
         return $this->belongsTo(rentRoomStory::class,'payRentRoom_id');
     }
 
+
     
 
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin\rentRoom;
+
+use App\electric;
 use App\members;
 use App\rentRoom;
 use App\rooms;
@@ -10,7 +12,10 @@ use App\rentRoomStory;
 
 
 use App\Http\Controllers\Controller;
+use App\water;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -27,7 +32,7 @@ class IndexController extends Controller
     public function index()
     {
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.index',compact('rentRoom'));
+        return view('admin.rentRoom.index', compact('rentRoom'));
     }
 
     /**
@@ -41,7 +46,7 @@ class IndexController extends Controller
         $room = rooms::all();
         // dd($room);
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.create',compact('rentRoom','member','room'));
+        return view('admin.rentRoom.create', compact('rentRoom', 'member', 'room'));
     }
 
     /**
@@ -63,21 +68,37 @@ class IndexController extends Controller
             'created_at' => Now(),
         ]);
 
-        if(request()->hasFile('image')){
+        if (request()->hasFile('image')) {
             $image = request()->file('image')->getClientOriginalName();
-            $image_name= date('day_H_s_i').'_'.$image;
-            request()->file('image')->storeAs('public/images/rentRooms',$image_name);
-            $rentRoom->Update(['image'=>$image_name]);
+            $image_name = date('day_H_s_i') . '_' . $image;
+            request()->file('image')->storeAs('public/images/rentRooms', $image_name);
+            $rentRoom->Update(['image' => $image_name]);
         }
 
-        // dd($rentRoom->id);
+
+        $from_date = Carbon::parse(date('Y-m-d', strtotime($request->intodate)));
+        $through_date = Carbon::parse(date('Y-m-d', strtotime($request->outdate)));
+        $shift_difference = $from_date->diffInDays($through_date);
+        $price = $rentRoom->room->price / 30;
 
         $rentRoomStory = rentRoomStory::create([
             'rentRoom_id' => $rentRoom->id,
+            'user_id' => Auth::user()->id,
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
+            'qtyday' => $shift_difference,
+            'price' => $shift_difference * $price,
+            'status' => "ສຳເລັດ",
+            'image' => $request->file('image'),
             'created_at' => Now(),
         ]);
+
+        // if (request()->hasFile('image')) {
+        //     $image = request()->file('image')->getClientOriginalName();
+        //     $image_name = date('day_H_s_i') . '_' . $image;
+        //     request()->file('image')->storeAs('public/images/rentRoomStory', $image_name);
+        //     $rentRoomStory->Update(['image' => $image_name]);
+        // }
 
 
 
@@ -95,8 +116,8 @@ class IndexController extends Controller
 
         $rentRoom->save();
         $rentRoomStory->save();
-        return redirect()->back()->with('success','ເພີ່ມຂໍ້ມູນການເຊົ່າສຳເລັດ');
-
+        // $rentRoomStory->save();
+        return redirect()->back()->with('success', 'ເພີ່ມຂໍ້ມູນການເຊົ່າສຳເລັດ');
     }
 
     /**
@@ -107,11 +128,15 @@ class IndexController extends Controller
      */
     public function show($id)
     {
+
+
+        $water = water::where('rentRoom_id', $id)->get();
+        $electric = electric::where('rentRoom_id', $id)->get();
         $rentRoomStory = rentRoomStory::all();
         $rentRooms = rentRoom::find($id);
-        $rentRoomStory = rentRoomStory::where('rentRoom_id',$id)->get();
+        $rentRoomStory = rentRoomStory::where('rentRoom_id', $id)->get();
         // dd($rentRoomStory);
-        return view('admin.rentRoom.show',compact('rentRooms','rentRoomStory','rentRoomStory'));
+        return view('admin.rentRoom.show', compact('rentRooms', 'rentRoomStory', 'rentRoomStory', 'electric', 'water'));
     }
 
     /**
@@ -126,7 +151,7 @@ class IndexController extends Controller
         $member = members::all();
         $rentRooms = rentRoom::find($id);
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.edit',compact('rentRoom','room','rentRooms','member'));
+        return view('admin.rentRoom.edit', compact('rentRoom', 'room', 'rentRooms', 'member'));
     }
 
     /**
@@ -142,13 +167,24 @@ class IndexController extends Controller
         $rentRoom = rentRoom::where('id', $id)->update([
             'room_id' => $request->room_id,
             'member_id' => $request->member_id,
-            'intodate' => $request->intodate,
-            'outdate' => $request->outdate,
-            'noContact' => $request->noContact,
-            'status' =>"ອອກເເລ້ວ",
+            // 'intodate' => $request->intodate,
+            // 'outdate' => $request->outdate,
+            // 'noContact' => $request->noContact,
+            'status' => $request->status,
             'updated_at' => Now(),
         ]);
-        return redirect()->back()->with('success','ເເກ້ໄຂຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
+
+        rooms::where('id', $request->room_id)->update([
+            // 'user_id' => $request->user_id,
+            // 'idcard' => $request->idcard,
+            // 'village' => $request->village,
+            // 'distric' => $request->distric,
+            // 'province' => $request->province,
+            // 'country' => $request->country,
+            'status' => "ວາງ",
+            'updated_at' => Now(),
+        ]);
+        return redirect()->back()->with('success', 'ເເກ້ໄຂຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
     }
 
     /**
@@ -197,6 +233,6 @@ class IndexController extends Controller
         // $user->save();
 
         $rentRooms->delete();
-        return redirect()->back()->with('success','ລຶບຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
+        return redirect()->back()->with('success', 'ລຶບຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
     }
 }

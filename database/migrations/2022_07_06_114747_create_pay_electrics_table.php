@@ -15,15 +15,15 @@ class CreatePayElectricsTable extends Migration
     {
         Schema::create('pay_electrics', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('elect_id')->unsigned();
+            $table->bigInteger('electric_id')->unsigned();
             $table->integer('price');
             $table->string('image')->nullable();
-            $table->string('detail');
+            $table->string('detail')->nullable();
             $table->timestamps();
         });
         Schema::table('pay_electrics', function (Blueprint $table) {
-            $table->foreign('elect_id')->references('id')->on('electrics')->onDelete('cascade')->onUpdate('cascade');
-        });
+            $table->foreign('electric_id')->references('id')->on('electrics')->onDelete('cascade')->onUpdate('cascade');
+            });
     }
 
     /**

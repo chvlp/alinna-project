@@ -21,8 +21,14 @@ class rentRoom extends Model
     {
         return $this->belongsTo(rooms::class,'room_id');
     }
+    
     public function rentRoomStory()
     {
         return $this->hasMany(rentRoomStory::class,'rentRoom_id');
+    }
+
+    public function electric()
+    {
+        return $this->hasMany(electric::class,'rentRoom_id');
     }
 }

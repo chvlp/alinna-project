@@ -11,9 +11,9 @@ class electric extends Model
     protected $table = "electrics";
     protected $guarded;
 
-    public function room()
+    public function rentRoom()
     {
-        return $this->beLongsTo(rooms::class,'room_id');
+        return $this->beLongsTo(rentRoom::class,'rentRoom_id');
     }
     public function member()
     {

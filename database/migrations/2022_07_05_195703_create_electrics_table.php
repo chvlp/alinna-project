@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWatersTable extends Migration
+class CreateElectricsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,21 @@ class CreateWatersTable extends Migration
      */
     public function up()
     {
-        Schema::create('waters', function (Blueprint $table) {
+        Schema::create('electrics', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('room_id')->unsigned();
+            $table->date('indate');
+            $table->bigInteger('rentRoom_id')->unsigned();
             $table->bigInteger('member_id')->unsigned();
-            $table->string('IDwater');
+            $table->string('IDelectric');
+            $table->string('before');
+            $table->string('after');
             $table->integer('price');
             $table->string('image')->nullable();
-            $table->DateTime('dateLine');
+            $table->string('status');
             $table->timestamps();
         });
-        Schema::table('waters', function (Blueprint $table) {
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade')->onUpdate('cascade');
+        Schema::table('electrics', function (Blueprint $table) {
+            $table->foreign('rentRoom_id')->references('id')->on('rent_rooms')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -36,6 +39,6 @@ class CreateWatersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('waters');
+        Schema::dropIfExists('electrics');
     }
 }

@@ -17,10 +17,10 @@ class CreateRentRoomsTable extends Migration
             $table->id();
             $table->bigInteger('room_id')->unsigned();
             $table->bigInteger('member_id')->unsigned();
-            $table->date('intodate');
-            $table->date('outdate');
+            $table->date('intodate')->nullable();
+            $table->date('outdate')->nullable();
             $table->string('image')->nullable();
-            $table->string('noContact');
+            $table->string('noContact')->nullable();
             $table->string('status');
             $table->timestamps();
         });

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 
@@ -25,7 +26,7 @@ class UserSeeder extends Seeder
             'gender' => 'ທ້າວ',
             'phone' => '+856 20 789 060 35',
             'email' => 'admin@admin.com',
-            'image' => 'Profile.png',
+            'image' => 'profile.png',
             'password' => Hash::make('admin123'),
         ]);
         

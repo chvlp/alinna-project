@@ -19,4 +19,8 @@ class rentRoomStory extends Model
     {
         return $this->hasMany(payRentRoom::class, 'payRentRoom_id');
     }
+    public function user()
+    {
+         return $this->belongsTo(User::class,'user_id');
+    }
 }

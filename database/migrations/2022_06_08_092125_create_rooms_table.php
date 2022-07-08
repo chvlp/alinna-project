@@ -18,7 +18,7 @@ class CreateRoomsTable extends Migration
             $table->bigInteger('type_id')->unsigned();
             $table->string('number');
             $table->string('floor');
-            $table->string('price');
+            $table->integer('price');
             $table->string('status');
             $table->string('image')->nullable();
             $table->timestamps();
