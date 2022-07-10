@@ -17,6 +17,7 @@ class CreateTypeRoomsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('detail');
+            $table->string('image');
             $table->timestamps();
         });
     }

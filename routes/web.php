@@ -94,3 +94,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 //     Route::resource('/equiment',          'Equiment\IndexController');
 // });
 
+
+//Customer
+Route::namespace('Customer')->prefix('Customer')->name('Customer.')->group(function(){
+    Route::resource('/Customer',          'IndexController');
+});
+
+
+//User
+Route::namespace('User')->prefix('User')->name('User.')->group(function(){
+    Route::resource('/User',          'IndexController');
+});

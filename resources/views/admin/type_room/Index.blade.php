@@ -28,7 +28,13 @@
                         @foreach ($typeroom as $item)
                             <tr style="font-size:12px">
                                 <td>
-                                    <p style="font-size:12px" class="font-weight-bold mb-0">{{ $item->name }}</p>
+                                    <div class="d-flex">
+                                        <div>
+                                            <img src="{{ asset('storage/images/TypeRooms/' . $item->image) }}" width="60px" class="rounded-lg" alt="">
+                                        </div>
+                                        <p style="font-size:12px;padding-left:10px,margin-top:20px" class="font-weight-bold mb-0 pl-5">{{ $item->name }}</p>
+
+                                    </div>
                                 </td>
                                 <td>
                                     <p style="font-size:10px" class="font-weight-bold mb-0">{!! Str::words($item->detail, 7,'...')  !!}

@@ -49,11 +49,11 @@ class LoginController extends Controller
             return $this->redirectTo;
         }
         if(Auth::user()->hasRole('ຜູ້ເຊົ່າ')){
-            $this->redirectTo = route('user.index');
+            $this->redirectTo = route('Customer.Customer.index');
             return $this->redirectTo;
         }
         if(Auth::user()->hasRole('ຜູ້ໃຊ້')){
-            $this->redirectTo = route('user.index');
+            $this->redirectTo = route('User.User.index');
             return $this->redirectTo;
         }
         if(Auth::user()->hasRole('ປິດບັນຊີ')){

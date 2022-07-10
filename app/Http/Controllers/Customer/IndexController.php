@@ -1,14 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
-use App\image;
-use App\rooms;
-use App\type_room;
-use App\UserOrder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -19,11 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $userOd = UserOrder::where('user_id',Auth::user()->id)->get();
-        $userOrder = count($userOd);
-        $userOrders = UserOrder::where('user_id',Auth::user()->id)->get();
-        $typeRoom = type_room::all();
-        return view('user.index',compact('typeRoom','userOrder','userOrders','userOd'));
+        return view('customer.index');
     }
 
     /**
@@ -44,17 +35,7 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-
-        $userOrder = UserOrder::create([
-            'user_id' => Auth::user()->id,
-            'inday' => $request->inday,
-            'detail' =>$request->detail,
-            'sta' =>$request->sta,
-        ]);
-
-        $userOrder->save();
-        return redirect()->back()->with('success','ການຈອງສຳເລັດ');
-
+        //
     }
 
     /**
@@ -65,10 +46,7 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        $room = rooms::where('type_id',$id)->get();
-        $roomType = type_room::where('id',$id)->first();
-        $images= image::all();
-        return view('user.show',compact('room','images','roomType'));
+        //
     }
 
     /**

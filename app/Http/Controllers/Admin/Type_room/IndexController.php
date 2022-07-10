@@ -28,12 +28,20 @@ class IndexController extends Controller
     public function store(Request $request)
 
     {
-        // dd($request);
+
         $type_room = type_room::create([
             'name' => $request->name,
             'detail' => $request->detail,
+            'image' => $request->file('image'),
             'created_at' => Now(),
         ]);
+        if(request()->hasFile('image')){
+            $image = request()->file('image')->getClientOriginalName();
+            $image_name= date('day_H_s_i').'_'.$image;
+            request()->file('image')->storeAs('public/images/TypeRooms',$image_name);
+            $type_room->Update(['image'=>$image_name]);
+        }
+
         $type_room->save();
         return redirect()->back()->with('success','ເພີ່ມຂໍ້ມູນປະເພດຫ້ອງສຳເລັດ');
 
