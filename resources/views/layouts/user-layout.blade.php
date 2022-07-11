@@ -78,12 +78,30 @@
                                             data-bs-placement="bottom" title="ກັບໄປຍັງໜ້າຫຼັກ">ກ່ຽວກັບອາພາດເມັ້ນ</p>
                                     </a>
                                 </li>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+
+                                {{-- <li style="padding: 0 20px"
+                                class="nav-item d-flex align-items-center">
+                                <a class="nav-link text-body font-weight-bold px-0"
+                                    href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i style="color: rgb(255, 255, 255)"
+                                        class="fa-solid fa-right-from-bracket"></i>
+                                    <span style="color: rgb(255, 255, 255)"
+                                        class="d-sm-inline d-none">ອອກຈາກລະບົບ</span>
+                                </a>
+                            </li> --}}
+
                                 <li class="nav-item ms-lg-auto">
-                                    <a class="nav-link nav-link-icon me-2" href="">
+                                    <a class="nav-link text-body font-weight-bold px-0" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fa-solid fa-right-to-bracket"></i>
                                         <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title="ອອກຈາກລະບົບ">ອອກຈາກລະບົບ</p>
-                                    </a>
+                                        </a>
                                 </li>
                             </ul>
                         </div>
@@ -98,25 +116,25 @@
 
 
     @if ($message = Session::get('success'))
-    <span style="color: #0fa034"><i class="fas fa-check"></i> </span>
-    <div class="position-fixed bottom-1 end-1 z-index-2">
-        <div class="card-body p-3 pb-0">
-            <div class="alert alert-primary alert-dismissible text-white" role="alert"
-                aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <i class="material-icons text-success me-2">check</i>
-                    <span class="me-auto font-weight-bold">ສຳເລັດ</span>
+        <span style="color: #0fa034"><i class="fas fa-check"></i> </span>
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+            <div class="card-body p-3 pb-0">
+                <div class="alert alert-primary alert-dismissible text-white" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="toast-header">
+                        <i class="material-icons text-success me-2">check</i>
+                        <span class="me-auto font-weight-bold">ສຳເລັດ</span>
+                    </div>
+                    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <hr class="horizontal dark m-0">
+                    <div class="toast-body">{{ $message }}.</div>
                 </div>
-                <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
-                    aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <hr class="horizontal dark m-0">
-                <div class="toast-body">{{ $message }}.</div>
             </div>
         </div>
-    </div>
-@endif
+    @endif
 
     <footer class="footer pt-5 mt-5">
         <div class="container">
@@ -124,7 +142,7 @@
                 <div class="col-12">
                     <div class="text-center">
                         <p class="text-dark my-4 text-sm font-weight-normal">
-                           Alinna Apartment <a >Created by GROUP 082</a>.
+                            Alinna Apartment <a>Created by GROUP 082</a>.
                         </p>
                     </div>
                 </div>

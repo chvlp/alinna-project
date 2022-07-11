@@ -235,22 +235,22 @@
                             @elseif ($user->roles->pluck('id') == '[5]')
                                 @foreach ($member as $item)
                                     @if ($item->user_id == $user->id)
-                                        <div class="input-group input-group-dynamic mb-4">
+                                        <div class="input-group mb-4 input-group-static">
                                             <input type="hidden" name="rentRoomIdd"
                                                 value="{{ implode(', ',$item->rentRoom()->get()->pluck('room_id')->toArray()) }}">
-                                            <label class="form-control">ລະຫັດປະຈຳຕົວ: {{ $item->idcard }}</label>
+                                            <label>ລະຫັດປະຈຳຕົວ: {{ $item->idcard }}</label>
                                         </div>
-                                        <div class="input-group input-group-dynamic mb-4">
-                                            <label class="form-control">ທີ່ຢູ່ບ້ານ: {{ $item->village }}</label>
+                                        <div class="input-group mb-4 input-group-static">
+                                            <label>ທີ່ຢູ່ບ້ານ: {{ $item->village }}</label>
                                         </div>
-                                        <div class="input-group input-group-dynamic mb-4">
-                                            <label class="form-control">ທີ່ຢູ່ເມືອງ: {{ $item->distric }}</label>
+                                        <div class="input-group mb-4 input-group-static">
+                                            <label>ທີ່ຢູ່ເມືອງ: {{ $item->distric }}</label>
                                         </div>
-                                        <div class="input-group input-group-dynamic mb-4">
-                                            <label class="form-control">ທີ່ຢູ່ເເຂວງ: {{ $item->province }}</label>
+                                        <div class="input-group mb-4 input-group-static">
+                                            <label>ທີ່ຢູ່ເເຂວງ: {{ $item->province }}</label>
                                         </div>
-                                        <div class="input-group input-group-dynamic mb-4">
-                                            <label class="form-control">ປະເທດ: {{ $item->country }}</label>
+                                        <div class="input-group mb-4 input-group-static">
+                                            <label>ປະເທດ: {{ $item->country }}</label>
                                         </div>
 
 
@@ -275,25 +275,25 @@
 
 
                             <div id="hidden-field" onchange="showHide()" style="display: none;">
-                                <div class="input-group input-group-dynamic mb-4">
-                                    <label class="form-label">ລະຫັດປະຈຳຕົວ</label>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ລະຫັດປະຈຳຕົວ</label>
                                     {{-- <input type="hidden" name="rentRoomId" value="{{ implode(', ', $item->rentRoom()->get()->pluck('room_id')->toArray()) }}"> --}}
                                     <input name="idcard" type="text" class="form-control">
                                 </div>
-                                <div class="input-group input-group-dynamic mb-4">
-                                    <label class="form-label">ບ້ານ</label>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ບ້ານ</label>
                                     <input name="village" type="text" class="form-control">
                                 </div>
-                                <div class="input-group input-group-dynamic mb-4">
-                                    <label class="form-label">ເມືອງ</label>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ເມືອງ</label>
                                     <input name="distric" type="text" class="form-control">
                                 </div>
-                                <div class="input-group input-group-dynamic mb-4">
-                                    <label class="form-label">ເເຂວງ</label>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ເເຂວງ</label>
                                     <input name="province" type="text" class="form-control">
                                 </div>
-                                <div class="input-group input-group-dynamic mb-4">
-                                    <label class="form-label">ປະເທດ</label>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ປະເທດ</label>
                                     <input name="country" type="text" class="form-control">
                                 </div>
                             </div>

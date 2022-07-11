@@ -12,6 +12,7 @@ use App\rentRoomStory;
 
 
 use App\Http\Controllers\Controller;
+use App\UserOrder;
 use App\water;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,8 +32,9 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $order = UserOrder::all();
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.index', compact('rentRoom'));
+        return view('admin.rentRoom.index', compact('rentRoom','order'));
     }
 
     /**
@@ -42,11 +44,12 @@ class IndexController extends Controller
      */
     public function create()
     {
+        $order = UserOrder::all();
         $member = members::all();
         $room = rooms::all();
         // dd($room);
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.create', compact('rentRoom', 'member', 'room'));
+        return view('admin.rentRoom.create', compact('rentRoom', 'member', 'room','order'));
     }
 
     /**
@@ -75,6 +78,8 @@ class IndexController extends Controller
             $rentRoom->Update(['image' => $image_name]);
         }
 
+        // dd($rentRoom->member->user->id);
+
 
         $from_date = Carbon::parse(date('Y-m-d', strtotime($request->intodate)));
         $through_date = Carbon::parse(date('Y-m-d', strtotime($request->outdate)));
@@ -83,12 +88,12 @@ class IndexController extends Controller
 
         $rentRoomStory = rentRoomStory::create([
             'rentRoom_id' => $rentRoom->id,
-            'user_id' => Auth::user()->id,
+            'user_id' => $rentRoom->member->user->id,
             'intodate' => $request->intodate,
             'outdate' => $request->outdate,
             'qtyday' => $shift_difference,
             'price' => $shift_difference * $price,
-            'status' => "ສຳເລັດ",
+            'status' => "ຍອມຮັບ",
             'image' => $request->file('image'),
             'created_at' => Now(),
         ]);
@@ -130,13 +135,14 @@ class IndexController extends Controller
     {
 
 
+        $order = UserOrder::all();
         $water = water::where('rentRoom_id', $id)->get();
         $electric = electric::where('rentRoom_id', $id)->get();
         $rentRoomStory = rentRoomStory::all();
         $rentRooms = rentRoom::find($id);
         $rentRoomStory = rentRoomStory::where('rentRoom_id', $id)->get();
         // dd($rentRoomStory);
-        return view('admin.rentRoom.show', compact('rentRooms', 'rentRoomStory', 'rentRoomStory', 'electric', 'water'));
+        return view('admin.rentRoom.show', compact('rentRooms', 'rentRoomStory', 'rentRoomStory', 'electric', 'water','order'));
     }
 
     /**
@@ -147,11 +153,12 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
+        $order = UserOrder::all();
         $room = rooms::all();
         $member = members::all();
         $rentRooms = rentRoom::find($id);
         $rentRoom = rentRoom::orderBy('id')->paginate(5);
-        return view('admin.rentRoom.edit', compact('rentRoom', 'room', 'rentRooms', 'member'));
+        return view('admin.rentRoom.edit', compact('rentRoom', 'room', 'rentRooms', 'member','order'));
     }
 
     /**
@@ -209,15 +216,15 @@ class IndexController extends Controller
             'status' => "ວາງ",
         ]);
 
-        $members = members::where('id', $rentRooms->member->id)->update([
+        // $members = members::where('id', $rentRooms->member->id)->update([
             // 'user_id' => $request->user_id,
             // 'idcard' => $request->idcard,
             // 'village' => $request->village,
             // 'distric' => $request->distric,
             // 'province' => $request->province,
             // 'country' => $request->country,
-            'status' => "ອອກເເລ້ວ",
-        ]);
+        //     'status' => "ອອກເເລ້ວ",
+        // ]);
 
         User::where('id', $rentRooms->member->user->id)->update([
             // 'user_id' => $request->user_id,

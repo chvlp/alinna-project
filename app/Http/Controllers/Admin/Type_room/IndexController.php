@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Type_room;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\type_room;
+use App\UserOrder;
 
 class IndexController extends Controller
 {
@@ -15,14 +16,16 @@ class IndexController extends Controller
     
     public function index()
     {
+        $order = UserOrder::all();
         $typeroom = type_room::with('room')->orderBy('id')->paginate(10);
-        return view('admin.type_room.Index',compact('typeroom'));
+        return view('admin.type_room.Index',compact('typeroom','order'));
     }
     public function edit($id)
     {
+        $order = UserOrder::all();
         $typeroom = type_room::orderBy('id')->paginate(10);
         $typerooms = type_room::find($id)->where('id',$id)->first();
-        return view('admin.type_room.edit',compact('typeroom','typerooms'));
+        return view('admin.type_room.edit',compact('typeroom','typerooms','order'));
     }
    
     public function store(Request $request)
@@ -56,8 +59,9 @@ class IndexController extends Controller
 
     public function create()
     {
+        $order = UserOrder::all();
         $typeroom = type_room::orderBy('id')->paginate(10);
-        return view('admin.type_room.create',compact('typeroom'));
+        return view('admin.type_room.create',compact('typeroom','order'));
     }
 
     public function update($id, Request $request){

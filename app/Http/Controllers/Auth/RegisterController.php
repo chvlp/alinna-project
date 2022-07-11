@@ -99,7 +99,7 @@ class RegisterController extends Controller
             return $this->redirectTo;
         }
         if(Auth::user()->hasRole('ພະນັກງານ')){
-            $this->redirectTo = route('dormit.index');
+            $this->redirectTo = route('admin.index');
             return $this->redirectTo;
         }
         if(Auth::user()->hasRole('ຜູ້ເຊົ່າ')){
@@ -110,8 +110,8 @@ class RegisterController extends Controller
             $this->redirectTo = route('User.User.index');
             return $this->redirectTo;
         }
-        if(Auth::user()->hasRole('ປິດບັນຊີ')){
-            $this->redirectTo = route('user.index');
+        if(Auth::user()->hasRole('ອອກ')){
+            $this->redirectTo = route('User.User.index');
             return $this->redirectTo;
         }
         // else{

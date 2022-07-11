@@ -8,6 +8,7 @@ use App\members;
 
 use App\Http\Controllers\Controller;
 use App\payElectric;
+use App\UserOrder;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -24,8 +25,9 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $order = UserOrder::all();
         $electric = electric::orderBy('id')->paginate(5);
-        return view('admin.electric.index', compact('electric'));
+        return view('admin.electric.index', compact('electric','order'));
     }
 
     /**
@@ -92,9 +94,10 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
+        $order = UserOrder::all();
         $pay_electric = payElectric::where('electric_id',$id)->first();
         $electric = electric::where('id',$id)->first();
-        return view('admin.electric.Edit',compact('electric','pay_electric'));
+        return view('admin.electric.Edit',compact('electric','pay_electric','order'));
     }
 
     /**

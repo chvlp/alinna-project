@@ -47,6 +47,20 @@ Route::get('/aboutus', function () {
 // main admin
 Route::get('/admin',                    'Admin\IndexController@index')->name('admin.index');
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/sumery',          'Sumery\IndexController',['except' =>['show','store','edit','destroy','show','create','update']]);
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.report.')->group(function(){
+    Route::resource('/report/room',          'Report\Room\IndexController',['except' =>['show','store','edit','destroy','show','create','update']]);
+});
+Route::namespace('Admin')->prefix('admin')->name('admin.report.')->group(function(){
+    Route::resource('/report/water_elec',          'Report\Water_Elec\IndexController',['except' =>['show','store','edit','destroy','show','create','update']]);
+});
+
+
+
+
 // admin user 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:seen-item')->group(function(){
     Route::resource('/user',          'User\IndexController',['except' =>['show','create','store']]);
@@ -99,6 +113,16 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 Route::namespace('Customer')->prefix('Customer')->name('Customer.')->group(function(){
     Route::resource('/Customer',          'IndexController');
 });
+Route::namespace('Customer')->prefix('Customer')->name('Customer.')->group(function(){
+    Route::resource('/rent',          'Rent\IndexController');
+});
+Route::namespace('Customer')->prefix('Customer')->name('Customer.')->group(function(){
+    Route::resource('/electric',          'Electric\IndexController');
+});
+Route::namespace('Customer')->prefix('Customer')->name('Customer.')->group(function(){
+    Route::resource('/water',          'Water\IndexController');
+});
+
 
 
 //User

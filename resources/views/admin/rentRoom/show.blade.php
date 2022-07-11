@@ -38,14 +38,6 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="ms-auto w-50 d-flex align-items-end justify-content-end">
-                                            <div>
-                                                <h5 class="text-white mt-4 mb-5 pb-2">
-                                                    ຄ້າງຊຳລະ| {{ $rentRooms->room->price }} $
-                                                </h5>
-                                            </div>
-                                        </div> --}}
-
                                     </div>
 
                                     <div class="d-flex">
@@ -152,52 +144,11 @@
                             </div>
                             <div class="card-body p-1">
                                 <div class="row">
-                                    {{-- @foreach ($rentRoomStory as $item)
-                                        @if ($item->rentRoom_id == $rentRooms->id)
-                                            <div style="font-family:'Notopadding-top: 2%"
-                                                class="col-md-12 mb-md-0 mb-4 pt-3">
-                                                <div
-                                                    class="card card-body border bg-gradient-dark opacity-9 card-plain border-radius-lg d-flex align-items-center flex-row">
-                                                    <div class="d-flex" style="font-family: 'Noto sans Lao">
-                                                        <div class="me-4">
-                                                            <p class="text-white text-sm opacity-8 mb-0">ວ.ດ.ປ ເຊົ່າ</p>
-                                                            <h6 class="text-white mb-0">{{ $item->intodate }}</h6>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ms-auto w-30 d-flex align-items-end justify-content-end">
-                                                        <div>
-                                                            <p class="text-white text-sm opacity-8 mb-0">ວັນໝົດກຳນົດ</p>
-                                                            <h6 class="text-white mb-0">{{ $item->outdate }}</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ms-auto w-30 d-flex align-items-end justify-content-end">
-                                                        <div>
-                                                            <p class="text-white text-sm opacity-8 mb-0">ລາຄ່າທີ່ຕ້ອງຈ່າຍ</p>
-                                                            <h6 class="text-white mb-0">{{ $item->outdate }}</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ms-auto w-30 d-flex align-items-end justify-content-end">
-                                                        <div class="d-flex">
-                                                            <h5
-                                                                style="font-family: 'Noto sans Lao';color:red;padding-right:5px;margin-top:16px">
-                                                                ຈ່າຍແລ້ວ</h5>
-                                                            <i style="padding-left:4px;margin-top: 14px;font-size:30px"
-                                                                class="fa-solid fa-pen-to-square"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach --}}
                                     <div class="table-responsive">
                                         <table class="table align-items-center mb-0">
                                             <thead>
 
                                                 <tr>
-                                                    <th
-                                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        ວັນທີ່ເດືອນປີເຂົ້າ</th>
                                                     <th
                                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                         ວັນທີ່ເດືອນປີອອກ</th>
@@ -215,27 +166,19 @@
                                                         ຮູບພາບ & ສະຖານະ ການຊຳລະ</th>
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        ຜູ້ເພີ່ມຂໍ້ມູນ</th>
-                                                    <th
-                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    </th>
+                                                        </th>
+                            
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($rentRoomStory as $item)
                                                     @if ($item->rentRoom_id == $rentRooms->id)
                                                         <tr>
-                                                            <td>
-                                                                <div class="d-flex px-2 py-1">
-                                                                    <div class="d-flex flex-column justify-content-center">
-                                                                        <h6 class="mb-0 text-sm">{{ $item->intodate }}
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
+                                                        
                                                             <td>
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">{{ $item->outdate }}
+                                                                    <h6 class="mb-0 text-sm">
+                                                                        {{ date('d-m-Y',strtotime( $item->outdate )) }}
                                                                     </h6>
                                                                 </div>
 
@@ -265,7 +208,7 @@
                                                                             style="cursor: default;margin-left:15px ;margin-top:15px;width:150px"
                                                                             class="btn btn-warning">
                                                                             {{ $item->status }}</span>
-                                                                    @elseif ($item->status == 'ສຳເລັດ')
+                                                                    @elseif ($item->status == 'ຍອມຮັບ')
                                                                         <span
                                                                             style="cursor: default;margin-left:15px ;margin-top:15px;width:150px"
                                                                             class="btn btn-success">
@@ -281,13 +224,9 @@
 
                                                             </td>
 
-                                                            <td class="align-middle text-center text-sm">
-                                                                <span class="text-xs font-weight-bold">
-                                                                    {{ $item->user->name }}</span>
-                                                            </td>
 
                                                             <td class="align-middle">
-                                                                @if ($item->status == 'ສຳເລັດ')
+                                                                @if ($item->status == 'ຍອມຮັບ')
                                                                 @else
                                                                     <a
                                                                         href="{{ route('admin.rentRoomStory.edit', $item->id) }}"><i
@@ -304,7 +243,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div style="padding-top: 2%" class="col-md-12">
+                                    {{-- <div style="padding-top: 2%" class="col-md-12">
                                         <li class="list-group-item rounded-lg">
                                             <form action="{{ route('admin.rentRoomStory.store') }}" method="POST"
                                                 enctype="multipart/form-data">
@@ -342,7 +281,7 @@
                                                 </div>
                                             </form>
                                         </li>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -444,12 +383,12 @@
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     ເດືອນ ປີ</th>
-                                                <th
+                                                {{-- <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     ເລກຄັ້ງນີ້</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                    ເລກຄັ້ງກ່ອນ</th>
+                                                    ເລກຄັ້ງກ່ອນ</th> --}}
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     ຮູບບິນ</th>
@@ -482,7 +421,7 @@
                                                         </div>
                                                     </td>
 
-                                                    <td class="align-middle text-center text-sm">
+                                                    {{-- <td class="align-middle text-center text-sm">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm">{{ $item->before }}
                                                             </h6>
@@ -491,7 +430,7 @@
                                                     <td class="align-middle text-center text-sm">
                                                         <span class="text-xs font-weight-bold">
                                                             {{ $item->after }}</span>
-                                                    </td>
+                                                    </td> --}}
                                                     <td class="align-middle text-center text-sm">
                                                         <a href="{{ asset('storage/images/Electrics/' . $item->image) }}"
                                                             target="_BLANK">
@@ -711,104 +650,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- ອຸປະກອນ --}}
-            {{-- <div class="col-md-2 mt-2">
-            <div class="card h-100 mb-4">
-                <div class="card-header pb-0 px-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="mb-0">ອຸປະກອນຫ້ອງ</h6>
-                        </div>
-                    </div>
-                </div>
-                <div style="border:1px" class="card-body pt-4 p-3">
-
-                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">ອຸປະກອນນອນ</h6>
-
-                    <ul style="border:1px solid red" class="list-group">
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_more</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Netflix</h6>
-                                    <span class="text-xs">27 March 2020, at 12:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                                - $ 2,500
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_less</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Apple</h6>
-                                    <span class="text-xs">27 March 2020, at 04:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 2,000
-                            </div>
-                        </li>
-                    </ul>
-
-
-                    <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">ອຸປະກອນເຮືອນຄົວ</h6>
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Stripe</h6>
-                                    <span class="text-xs">26 March 2020, at 13:45 PM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 750
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_less</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">HubSpot</h6>
-                                    <span class="text-xs">26 March 2020, at 12:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 1,000
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">expand_less</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Creative Tim</h6>
-                                    <span class="text-xs">26 March 2020, at 08:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                                + $ 2,500
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="material-icons text-lg">priority_high</i></button>
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Webflow</h6>
-                                    <span class="text-xs">26 March 2020, at 05:00 AM</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-                                Pending
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div> --}}
         </div>
     </div>
 

@@ -36,6 +36,7 @@
                                         <h4>ຫ້ອງ: {{ $rentRoomStory->rentRoom->room->number }}</h4>
                                         <h4>ຈຳນວນວັນເຊົ່າ: {{ $rentRoomStory->qtyday }}</h4>
                                         <h4>ຈຳນວນເງິນທີ່ຊຳລະ: {{ $rentRoomStory->price }}</h4>
+                                        <h4>ຈຳນວນເງິນທີ່ຊຳລະ: {{ $rentRoomStory->outdate }}</h4>
                                         <h4>ສະຖານະ:
                                             @if ($rentRoomStory->status == 'ກຳລັງກວດສອບ')
                                                 <div class="btn btn-warning" style="width: 80%">
@@ -71,6 +72,7 @@
                                         <input type="hidden" name="rentRoom_id"
                                             value="{{ $rentRoomStory->rentRoom->id }}">
                                         <input type="hidden" name="user_id" value="{{ $rentRoomStory->user_id }}">
+                                        <input type="hidden" name="outdate" value="{{ $rentRoomStory->outdate }}">
 
                                         <div class="input-group input-group-dynamic mb-4 form-floating">
                                             <select name="status" class="form-select form-select-sm" required>

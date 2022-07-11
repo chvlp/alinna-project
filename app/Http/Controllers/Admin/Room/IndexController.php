@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\rooms;
 use App\type_room;
 use App\image;
+use App\UserOrder;
 
 class IndexController extends Controller
 {
@@ -17,15 +18,17 @@ class IndexController extends Controller
     
     public function index()
     {   
+        $order = UserOrder::all();
         $rooms = rooms::orderBy('id')->paginate(10);
-        return view('admin.room.index',compact('rooms'));
+        return view('admin.room.index',compact('rooms','order'));
     }
 
     public function create()
     {
+        $order = UserOrder::all();
         $rooms = rooms::orderBy('id')->paginate(10);
         $type_rooms = type_room::all();
-        return view('admin.room.create',compact('rooms','type_rooms'));
+        return view('admin.room.create',compact('rooms','type_rooms','order'));
     }
 
     public function store(Request $request)
@@ -57,10 +60,11 @@ class IndexController extends Controller
 
     public function edit($id)
     {
+        $order = UserOrder::all();
         $rooms = rooms::orderBy('id')->paginate(10);
         $roomid = rooms::where('id',$id)->first();
         $type_rooms = type_room::all();
-        return view('admin.room.edit',compact('rooms','type_rooms','roomid'));
+        return view('admin.room.edit',compact('rooms','type_rooms','roomid','order'));
     }
 
     public function update(Request $request, $id)
@@ -85,9 +89,10 @@ class IndexController extends Controller
     
     public function show($id)
     {
+        $order = UserOrder::all();
         $rooms = rooms::find($id);
         $image = image::all();
-        return view('admin.room.show',compact('rooms','image'));
+        return view('admin.room.show',compact('rooms','image','order'));
     }
 
 

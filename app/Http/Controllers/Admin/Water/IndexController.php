@@ -4,11 +4,17 @@ namespace App\Http\Controllers\Admin\Water;
 
 use App\Http\Controllers\Controller;
 use App\payWater;
+use App\UserOrder;
 use App\water;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -77,9 +83,10 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
+        $order = UserOrder::all();
         $pay_water = payWater::where('water_id', $id)->first();
         $water = water::where('id', $id)->first();
-        return view('admin.water.Edit', compact('water', 'pay_water'));
+        return view('admin.water.Edit', compact('water', 'pay_water','order'));
     }
 
     /**

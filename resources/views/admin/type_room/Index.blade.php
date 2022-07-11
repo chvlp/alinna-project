@@ -16,7 +16,8 @@
                 <table class="table align-items-center mb-0">
                     <thead>
                         <tr>
-                            <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">
+                        <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">ໄອດິ</th>
+                        <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">
                                 ຊື່ປະເພດ</th>
                             <th class="text-uppercase text-secondary text-xxs  font-weight-bolder opacity-7 ps-2">
                                 ລາຍລະອຽດ</th>
@@ -28,6 +29,21 @@
                         @foreach ($typeroom as $item)
                             <tr style="font-size:12px">
                                 <td>
+                                    <p class="text-center font-weight-bold mb-0">{{ $item->id }}</p>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                            <img src="{{ asset('storage/images/TypeRooms/' . $item->image) }}"
+                                                class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center ">
+                                            <h6 class="mb-0 text-sm">{{ $item->name }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+{{-- 
+                                <td>
                                     <div class="d-flex">
                                         <div>
                                             <img src="{{ asset('storage/images/TypeRooms/' . $item->image) }}" width="60px" class="rounded-lg" alt="">
@@ -35,7 +51,7 @@
                                         <p style="font-size:12px;padding-left:10px,margin-top:20px" class="font-weight-bold mb-0 pl-5">{{ $item->name }}</p>
 
                                     </div>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <p style="font-size:10px" class="font-weight-bold mb-0">{!! Str::words($item->detail, 7,'...')  !!}
                                     </p>

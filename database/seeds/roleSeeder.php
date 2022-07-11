@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class roleSeeder extends Seeder
 {
@@ -36,7 +37,7 @@ class roleSeeder extends Seeder
         DB::table('roles')->insert(
             
             [
-                'name' => 'ປິດບັນຊີ'
+                'name' => 'ອອກ'
             ]
         );
     }

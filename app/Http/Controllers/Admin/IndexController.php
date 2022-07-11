@@ -9,6 +9,7 @@ use App\RegistorUser;
 use App\RoleUser;
 use App\School;
 use App\User;
+use App\UserOrder;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -21,7 +22,7 @@ class IndexController extends Controller
 
     public function index()
     {
-
-        return view('admin.index');
+        $order = UserOrder::all();
+        return view('admin.index',compact('order'));
     }
 }

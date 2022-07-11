@@ -9,11 +9,13 @@ use App\User;
 use App\members;
 use App\rooms;
 use App\rentRoom;
+use App\UserOrder;
 use Illuminate\Http\Request;
 use Whoops\Run;
 
 class IndexController extends Controller
 {
+    
     public function __construct()
     {
         $this -> middleware('auth');
@@ -24,15 +26,17 @@ class IndexController extends Controller
     {
         if (empty($request->all())) {
 
-            $users = User::orderBy('id')->paginate(10);
-            return view('admin.user.index',compact('users'));
+        $order = UserOrder::all();
+        $users = User::orderBy('id')->paginate(10);
+            return view('admin.user.index',compact('users','order'));
         }
             else{
 
-                $users = User::where('id','like','%'.$request->search.'%')
+        $order = UserOrder::all();
+        $users = User::where('id','like','%'.$request->search.'%')
                 ->orWhere('name','like','%'.$request->search.'%')
                 ->paginate(10);
-                return view('admin.user.index',compact('users'));
+                return view('admin.user.index',compact('users','order'));
             }
     }
 
@@ -40,22 +44,24 @@ class IndexController extends Controller
     {
         if (empty($request->all())) {
 
-            $member = members::all();
+        $order = UserOrder::all();
+        $member = members::all();
             $users = User::orderBy('id')->paginate(10);
             $roles = Role::all();
-            return view('admin.user.edit',compact('roles','users','member'))->with([
+            return view('admin.user.edit',compact('roles','users','member','order'))->with([
                 'user' => $user,
                 'roles' => $roles
             ]);
 
         }
         else{
-            $member = members::all();
+        $order = UserOrder::all();
+        $member = members::all();
             $users = User::where('id','like','%'.$request->search.'%')
             ->orWhere('name','like','%'.$request->search.'%')
             ->paginate(10);
             $roles = Role::all();
-            return view('admin.user.edit',compact('roles','users','member'))->with([
+            return view('admin.user.edit',compact('roles','users','member','order'))->with([
                 'user' => $user,
                 'roles' => $roles
             ]);

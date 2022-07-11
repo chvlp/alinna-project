@@ -27,8 +27,8 @@
             <div style="font-family: 'Noto Sans Lao" class="card-body">                    
               <form role="form" class="text-start"  method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="input-group input-group-outline my-3">
-                  <label class="form-label">ຊື່</label>
+                <div class="input-group mb-4 input-group-static">
+                  <label>ຊື່</label>
                     <input  type="input" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 </div>
                 @error('name')
@@ -37,10 +37,17 @@
                   </span>
                 @enderror
                 
-                <div class="input-group input-group-outline my-3">
+                {{-- <div class="input-group input-group-outline my-3">
                   <label class="form-label">ນາມສະກຸນ</label>
                   <input type="input" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname">
-                </div>
+                </div> --}}
+
+                <div class="input-group mb-4 input-group-static">
+                  <label>ນາມສະກຸນ</label>
+                  <input type="input" class="form-control" name="surname" value="{{ old('surname') }}"
+                      required >
+              </div>
+
 
                 <div class="input-group input-group-dynamic mb-4 form-floating">
                   <select name="gender" class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -50,8 +57,8 @@
                   <label for="floatingSelect"> ເພດ </label>
               </div>
 
-                <div class="input-group input-group-outline my-3">
-                <label class="form-label">ເບີໂທ</label>
+              <div class="input-group mb-4 input-group-static">
+                <label>ເບີໂທ</label>
                     <input  type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
                 </div>
                 @error('phone')
@@ -60,14 +67,14 @@
                 </span>
                 @enderror
 
-                <div class="input-group input-group-outline my-3">
+                <div class="input-group mb-4 input-group-static">
                   <label class="input-group-text" for="inputGroupFile">ເລືອກຮູບ</label>
                   <input width="40%" class="form-control" type="file" id="formFile" name="image" onchange="preview()">
                   <img id="frame" width="35%" src="" class="img-fluid" />
                 </div>
 
-                <div class="input-group input-group-outline my-3">
-                  <label class="form-label">ອີເມວ</label>
+                <div class="input-group mb-4 input-group-static">
+                  <label>ອີເມວ</label>
                   <input  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                 </div>
 
@@ -79,8 +86,8 @@
                 </span>
                 @enderror
 
-                <div class="input-group input-group-outline mb-3">
-                  <label class="form-label">ລະຫັດຜ່ານ</label>
+                <div class="input-group mb-4 input-group-static">
+                  <label>ລະຫັດຜ່ານ</label>
                   <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
                 </div>
 
@@ -90,8 +97,8 @@
                 </span>
                 @enderror
 
-                <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">ຢືນຢັນລະຫັດຜ່ານ</label>
+                <div class="input-group mb-4 input-group-static">
+                    <label>ຢືນຢັນລະຫັດຜ່ານ</label>
                     <input type="password" class="form-control" name="password_confirmation" required >
                   </div>
 

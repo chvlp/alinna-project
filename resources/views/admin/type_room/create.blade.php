@@ -71,6 +71,10 @@
                                     <label>ຊື່ປະເພດ</label>
                                     <input name="name" type="text" class="form-control">
                                 </div>
+                                <div class="input-group mb-4 input-group-static">
+                                    <label>ເລືອກຮູບ</label>
+                                    <input name="image" type="file" class="form-control">
+                                </div>
 
                                 <div class="input-group mb-4 input-group-static">
                                     <label>ລາຍລະອຽດ</label>

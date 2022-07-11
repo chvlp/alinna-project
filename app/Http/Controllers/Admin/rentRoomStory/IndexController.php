@@ -5,12 +5,18 @@ namespace App\Http\Controllers\Admin\rentRoomStory;
 use App\Http\Controllers\Controller;
 use App\rentRoom;
 use App\rentRoomStory;
+use App\UserOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +48,7 @@ class IndexController extends Controller
         // dd($request->rentRoom_id);
 
         $rentRoom = rentRoom::where('id', $request->rentRoom_id)->first();
+
         $from_date = Carbon::parse(date('Y-m-d', strtotime($request->intodate)));
         $through_date = Carbon::parse(date('Y-m-d', strtotime($request->outdate)));
         $shift_difference = $from_date->diffInDays($through_date);
@@ -99,10 +106,11 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
+        $order = UserOrder::all();
         $back = rentRoomStory::where('rentRoom_id', $id)->get();
         $rentRoomStory = rentRoomStory::where('id', $id)->first();
         // dd($rentRoomStory);
-        return view('admin.rentRoomStory.Edit', compact('rentRoomStory', 'back'));
+        return view('admin.rentRoomStory.Edit', compact('rentRoomStory', 'back','order'));
     }
 
     /**
@@ -115,15 +123,22 @@ class IndexController extends Controller
     public function update(Request $request, $id)
     {
         // dd($id);
+        // dd($request->outdate);
         $rentRoomStory = rentRoomStory::where('id', $id)->update([
             'rentRoom_id' => $request->rentRoom_id,
-            'user_id' => Auth::user()->id,
+            'user_id' => $request->user_id,
             // 'intodate' => $request->intodate,
             // 'outdate' => $request->outdate,
             // 'noContact' => $request->noContact,
             'status' => $request->status,
             'updated_at' => Now(),
         ]);
+        // dd($rentRoomStory->outdate);
+
+        $rentRoom = rentRoom::where('id',$request->rentRoom_id)->update([
+            'outdate'=>$request->outdate,
+        ]);
+
         return redirect()->back()->with('success', 'ເເກ້ໄຂຂໍ້ມູນການເຊົ່າຫສຳເລັດ');
     }
 

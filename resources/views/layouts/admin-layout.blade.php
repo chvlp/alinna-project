@@ -109,11 +109,30 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="">
+                    <a class="nav-link text-white @yield('sumery') " href="{{ route('admin.sumery.index') }}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-users-line"></i>
                         </div>
                         <span class="nav-link-text ms-1">ລາຍງານຂໍ້ມູນຜູ້ໃຊ້</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white @yield('reproom') " href="{{ route('admin.report.room.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-people-roof"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">ລາຍງານຂໍ້ມູນຫ້ອງ</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white @yield('walelec') "
+                        href="{{ route('admin.report.water_elec.index') }}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-people-roof"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">ລາງານຂໍ້ມູນຄ່າໄຟຟ້າ ແລະ ຄ່ານ້ຳປະປາ</span>
                     </a>
                 </li>
 
@@ -161,6 +180,7 @@
                                                 </div>
                                             </div>
                                             <ul class="navbar-nav  justify-content-end">
+
                                                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
                                                     <a href="javascript:;" class="nav-link text-body p-0"
                                                         id="dropdownMenuButton" data-bs-toggle="dropdown"
@@ -169,30 +189,35 @@
                                                     </a>
                                                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                                                         aria-labelledby="dropdownMenuButton">
+                                                        
+                                                        @foreach ($order as $item)
+                                                            <li class="mb-2">
+                                                                <a class="dropdown-item border-radius-md"
+                                                                    href="javascript:;">
+                                                                    <div class="d-flex py-1">
+                                                                        <div class="my-auto">
+                                                                            <img src="{{ asset('storage/images/profiles/' . $item->user->image) }}"
+                                                                                class="avatar avatar-sm  me-3 ">
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column justify-content-center">
+                                                                            <h6
+                                                                                class="text-sm font-weight-normal mb-1">
+                                                                                <span
+                                                                                    class="font-weight-bold">{{ $item->user->gender }} {{ $item->user->name }} {{ $item->user->surname }}</span>
+                                                                                
+                                                                            </h6>
+                                                                            <p class="text-xs text-secondary mb-0">
+                                                                                <i class="fa fa-clock me-1"></i>
+                                                                               {{ date('d-m-Y',strtotime($item->inday)) }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                      
 
-                                                        <li class="mb-2">
-                                                            <a class="dropdown-item border-radius-md"
-                                                                href="javascript:;">
-                                                                <div class="d-flex py-1">
-                                                                    <div class="my-auto">
-                                                                        <img src="../../../assets/img/team-2.jpg"
-                                                                            class="avatar avatar-sm  me-3 ">
-                                                                    </div>
-                                                                    <div
-                                                                        class="d-flex flex-column justify-content-center">
-                                                                        <h6 class="text-sm font-weight-normal mb-1">
-                                                                            <span
-                                                                                class="font-weight-bold">ການເເຈ້ງເຕືອນໃໝ່</span>
-                                                                            ຈາກ ບັນດາ
-                                                                        </h6>
-                                                                        <p class="text-xs text-secondary mb-0">
-                                                                            <i class="fa fa-clock me-1"></i>
-                                                                            13 ນາທີຜ່ານມາ
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </li>
 
