@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use App\UserOrder;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 /*
@@ -20,16 +21,20 @@ Auth::routes();
 Route::get('/', function () {
     if(Auth::check()){
         if(Auth::user()->hasRole('ເຈົ້າຂອງອາພາດເມັ້ນ')){
-            return view('admin.index');
+            $order = UserOrder::all();
+            return view('admin.index',compact('order'));
         }
         if(Auth::user()->hasRole('ພະນັກງານ')){
-            return view('admin.index');
+            $order = UserOrder::all();
+            return view('admin.index',compact('order'));
         }
         if(Auth::user()->hasRole('ຜູ້ເຊົ່າ')){
-            return view('admin.index');
+            $order = UserOrder::all();
+            return view('admin.index',compact('order'));
         }
         if(Auth::user()->hasRole('ຜູ້ໃຊ້')){
-            return view('admin.index');
+            $order = UserOrder::all();
+            return view('admin.index',compact('order'));
         }
 
     }else{

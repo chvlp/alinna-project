@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserOrder;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $order = UserOrder::all();
+        return view('home',compact('order'));
     }
     
 }
